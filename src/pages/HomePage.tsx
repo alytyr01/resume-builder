@@ -1,59 +1,9 @@
 import { Button } from '@/components/ui';
 import { FileText, ArrowRight, Sparkles, Shield, Download, Eye, Star, BarChart3, ChevronDown } from 'lucide-react';
 import { getTemplate } from '@/components/templates';
-import { createSampleResume, createSampleResume2, createSampleResume3, createSampleResume4, createSampleResume5 } from '@/data/sampleResume';
-import type { Customization, ResumeData } from '@/types/resume';
+import { createPlaceholderResume } from '@/data/placeholderResume';
+import type { Customization } from '@/types/resume';
 import { useEffect, useState } from 'react';
-
-const customModern: Customization = {
-  templateId: 'modern',
-  primaryColor: '#2563EB',
-  accentColor: '#2563EB',
-  fontFamily: 'Inter',
-  fontSize: 15,
-  lineSpacing: 1.65,
-  sectionSpacing: 36,
-};
-
-const customMinimal: Customization = {
-  templateId: 'minimal',
-  primaryColor: '#059669',
-  accentColor: '#059669',
-  fontFamily: 'Inter',
-  fontSize: 14,
-  lineSpacing: 1.5,
-  sectionSpacing: 28,
-};
-
-const customProfessional: Customization = {
-  templateId: 'professional',
-  primaryColor: '#1E40AF',
-  accentColor: '#1E40AF',
-  fontFamily: 'Georgia',
-  fontSize: 15,
-  lineSpacing: 1.7,
-  sectionSpacing: 40,
-};
-
-const customATS: Customization = {
-  templateId: 'ats',
-  primaryColor: '#6D28D9',
-  accentColor: '#6D28D9',
-  fontFamily: 'Arial',
-  fontSize: 14,
-  lineSpacing: 1.6,
-  sectionSpacing: 32,
-};
-
-const customCreative: Customization = {
-  templateId: 'creative',
-  primaryColor: '#DC2626',
-  accentColor: '#DC2626',
-  fontFamily: 'Inter',
-  fontSize: 15,
-  lineSpacing: 1.65,
-  sectionSpacing: 36,
-};
 
 const stats = [
   { value: '50K+', label: 'Resumes Created' },
@@ -61,6 +11,101 @@ const stats = [
   { value: '85%', label: 'Interview Rate' },
   { value: 'Free', label: 'No Sign-Up' },
 ];
+
+const templateCustoms: Customization[] = [
+  { templateId: 'modern', primaryColor: '#2563EB', accentColor: '#2563EB', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 },
+  { templateId: 'minimal', primaryColor: '#059669', accentColor: '#059669', fontFamily: 'Inter', fontSize: 13, lineSpacing: 1.4, sectionSpacing: 24 },
+  { templateId: 'professional', primaryColor: '#1E40AF', accentColor: '#1E40AF', fontFamily: 'Georgia', fontSize: 14, lineSpacing: 1.55, sectionSpacing: 30 },
+  { templateId: 'ats', primaryColor: '#6D28D9', accentColor: '#6D28D9', fontFamily: 'Arial', fontSize: 13, lineSpacing: 1.45, sectionSpacing: 26 },
+  { templateId: 'creative', primaryColor: '#DC2626', accentColor: '#DC2626', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 },
+];
+
+function ResumeCard({ templateId, width, height }: { templateId: string; width: number; height: number }) {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setTooltipPos({
+      x: rect.left + rect.width / 2,
+      y: rect.top - 8,
+    });
+    setShowTooltip(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  };
+
+  const imageSrc = templateId === 'professional' ? '/images/resume2.png' : '/images/resume1.webp';
+
+  return (
+    <div
+      style={{
+        width,
+        height,
+        borderRadius: 20,
+        background: 'rgba(255, 255, 255, 0.25)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.4)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
+        overflow: 'hidden',
+        padding: 0,
+        boxSizing: 'border-box',
+        position: 'relative',
+        cursor: 'pointer',
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <img
+        src={imageSrc}
+        alt={`${templateId} template`}
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          borderRadius: 20,
+          display: 'block',
+        }}
+      />
+
+      {showTooltip && (
+        <div style={{
+          position: 'fixed',
+          left: tooltipPos.x,
+          top: tooltipPos.y,
+          transform: 'translate(-50%, -100%)',
+          background: '#0f172a',
+          color: '#fff',
+          padding: '6px 12px',
+          borderRadius: 6,
+          fontSize: 13,
+          fontWeight: 600,
+          whiteSpace: 'nowrap',
+          pointerEvents: 'none',
+          zIndex: 1000,
+          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          letterSpacing: '-0.01em',
+        }}>
+          {templateId.charAt(0).toUpperCase() + templateId.slice(1)} Template
+          <div style={{
+            position: 'absolute',
+            top: '100%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 0,
+            height: 0,
+            borderLeft: '6px solid transparent',
+            borderRight: '6px solid transparent',
+            borderTop: '6px solid #0f172a',
+          }} />
+        </div>
+      )}
+    </div>
+  );
+}
 
 const features = [
   {
@@ -94,52 +139,6 @@ const features = [
     desc: 'Save your progress as JSON and pick up where you left off anytime.',
   },
 ];
-
-function ResumeCard({ resume, custom }: { resume: ResumeData; custom: Customization }) {
-  const Template = getTemplate(custom.templateId);
-  return (
-    <div style={{
-      border: '1px solid #E2E8F0',
-      borderRadius: 10,
-      overflow: 'hidden',
-      background: '#fff',
-      boxShadow: '0 8px 20px -8px rgba(0,0,0,0.08)',
-      width: 180,
-      height: 220,
-      transition: 'all 0.2s ease',
-      cursor: 'pointer',
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.boxShadow = '0 12px 28px -8px rgba(79,70,229,0.15)';
-      e.currentTarget.style.borderColor = '#C7D2FE';
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.boxShadow = '0 8px 20px -8px rgba(0,0,0,0.08)';
-      e.currentTarget.style.borderColor = '#E2E8F0';
-    }}
-    >
-      {/* Mac-style dots */}
-      <div style={{
-        display: 'flex',
-        gap: 4,
-        padding: '6px 10px',
-        borderBottom: '1px solid #F1F5F9',
-        background: '#FAFAFA',
-      }}>
-        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#EF4444' }} />
-        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#F59E0B' }} />
-        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#10B981' }} />
-      </div>
-      <div style={{
-        transform: 'scale(0.18)',
-        transformOrigin: 'top left',
-        width: '555.55%',
-      }}>
-        <Template resume={resume} custom={custom} />
-      </div>
-    </div>
-  );
-}
 
 export function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -233,16 +232,22 @@ export function HomePage() {
 
       {/* Hero Section - Two Column Layout */}
       <div style={{
-        padding: '10px 96px 0',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 60,
+        padding: '120px 96px 0',
         minHeight: 'calc(100vh - 73px)',
       }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: 0,
+          marginLeft: 'auto',
+        }}>
         {/* Left Column - Text */}
         <div style={{
-          flex: '0 0 700px',
-          maxWidth: 700,
+          flex: '0 0 760px',
+          maxWidth: 760,
+          marginLeft: 80,
+          paddingLeft: 0,
+          paddingRight: 20,
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
           transition: 'all 0.6s ease-out',
@@ -252,40 +257,40 @@ export function HomePage() {
             fontWeight: 800,
             letterSpacing: '-0.04em',
             lineHeight: 1.05,
-            margin: '0 0 24px',
+            margin: '0 0 12px',
             color: '#0f172a',
-            maxWidth: 800,
+            maxWidth: 760,
           }}>
-            Build a resume{' '}
+            Build a resume that gets{' '}
             <span style={{
               background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
             }}>
-              that works
+              noticed by recruiters.
             </span>
           </h1>
           <p style={{
             fontSize: 20,
             lineHeight: 1.7,
             color: '#64748B',
-            maxWidth: 660,
-            margin: '0 0 40px',
+            maxWidth: 760,
+            margin: '0 0 16px',
           }}>
             A powerful yet minimal resume builder with live preview, 
             ATS-friendly output, and zero data tracking.
           </p>
 
           {/* CTA Buttons */}
-          <div style={{ display: 'flex', gap: 12, marginBottom: 40 }}>
+          <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
             <a
               href="/builder"
               style={{
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
-                padding: '16px 36px',
+                padding: '20px 40px',
                 fontSize: 17,
                 fontWeight: 600,
                 color: '#fff',
@@ -305,7 +310,7 @@ export function HomePage() {
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
-                padding: '16px 32px',
+                padding: '20px 36px',
                 fontSize: 17,
                 fontWeight: 500,
                 color: '#0f172a',
@@ -324,8 +329,8 @@ export function HomePage() {
           {/* Stats */}
           <div style={{
             display: 'flex',
-            gap: 36,
-            paddingTop: 24,
+            gap: 28,
+            paddingTop: 16,
             borderTop: '1px solid #F1F5F9',
           }}>
             {stats.map((stat) => (
@@ -347,39 +352,27 @@ export function HomePage() {
           </div>
         </div>
 
-        {/* Right Column - 5 Resume Grid */}
+        {/* Right Column - Two overlapping cards */}
         <div style={{
           flex: 1,
           minWidth: 0,
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 16,
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-          transition: 'all 0.6s ease-out 0.2s',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-end',
+          paddingLeft: 20,
+          marginRight: 70,
+          overflow: 'visible',
         }}>
-          {/* Top row - 2 resumes */}
-          <div style={{
-            display: 'flex',
-            gap: 16,
-            justifyContent: 'center',
-          }}>
-            <ResumeCard resume={createSampleResume()} custom={customModern} />
-            <ResumeCard resume={createSampleResume2()} custom={customMinimal} />
-          </div>
-          {/* Bottom row - 3 resumes */}
-          <div style={{
-            display: 'flex',
-            gap: 16,
-            justifyContent: 'center',
-          }}>
-            <ResumeCard resume={createSampleResume3()} custom={customProfessional} />
-            <ResumeCard resume={createSampleResume4()} custom={customATS} />
-            <ResumeCard resume={createSampleResume5()} custom={customCreative} />
+          <div style={{ position: 'relative', width: 520, height: 620, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ position: 'absolute', left: 0, top: 0, zIndex: 1 }}>
+              <ResumeCard templateId="modern" width={400} height={560} />
+            </div>
+            <div style={{ position: 'absolute', right: 0, top: 140, zIndex: 2 }}>
+              <ResumeCard templateId="professional" width={280} height={392} />
+            </div>
           </div>
         </div>
+      </div>
       </div>
 
       {/* Divider */}
