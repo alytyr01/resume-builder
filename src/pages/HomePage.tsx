@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui';
-import { FileText, ArrowRight, Sparkles, Shield, Download, Eye, Star, Zap, BarChart3 } from 'lucide-react';
+import { FileText, ArrowRight, Sparkles, Shield, Download, Eye, Star, Zap, BarChart3, ChevronDown } from 'lucide-react';
 import { useResumeStore } from '@/store/resumeStore';
 import { PremiumTemplate } from '@/components/templates/PremiumTemplate';
 import type { Customization } from '@/types/resume';
@@ -65,8 +65,8 @@ export function HomePage() {
 
   return (
     <div style={{
-      fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
-      background: '#FFFFFF',
+      fontFamily: 'sans-serif',
+      background: '#F8F9FA',
       color: '#111827',
       minHeight: '100vh',
       overflowX: 'hidden',
@@ -82,36 +82,43 @@ export function HomePage() {
         borderBottom: '1px solid #F3F4F6',
       }}>
         <div style={{
-          padding: '16px 96px',
+          padding: '20px 96px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{
-              width: 32,
-              height: 32,
-              borderRadius: 8,
-              background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <FileText style={{ width: 16, height: 16, color: '#fff' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{
+                width: 36,
+                height: 36,
+                borderRadius: 8,
+                background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <FileText style={{ width: 18, height: 18, color: '#fff' }} />
+              </div>
+              <span style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em' }}>ResumeForge</span>
             </div>
-            <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: '-0.02em' }}>ResumeForge</span>
+            <div style={{ width: 1, height: 24, background: '#E2E8F0' }} />
+            <a href="/templates" style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>Resume Templates <ChevronDown style={{ width: 18, height: 18 }} /></a>
+            <a href="/examples" style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>Resume Examples <ChevronDown style={{ width: 18, height: 18 }} /></a>
+            <a href="/faq" style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>FAQ <ChevronDown style={{ width: 18, height: 18 }} /></a>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <a href="/builder" style={{ textDecoration: 'none' }}>
               <Button
                 variant="ghost"
                 style={{
-                  fontSize: 14,
-                  padding: '8px 16px',
-                  height: 38,
+                  fontSize: 20,
+                  padding: '10px 20px',
+                  height: 44,
                   borderRadius: 8,
                   fontWeight: 500,
                   lineHeight: 1,
+                  fontFamily: 'sans-serif',
                 }}
               >
                 Sign In
@@ -120,15 +127,16 @@ export function HomePage() {
             <a href="/builder" style={{ textDecoration: 'none' }}>
               <Button
                 style={{
-                  fontSize: 14,
-                  padding: '8px 20px',
-                  height: 38,
+                  fontSize: 20,
+                  padding: '10px 24px',
+                  height: 44,
                   borderRadius: 8,
                   fontWeight: 600,
                   lineHeight: 1,
-                  background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
+                  fontFamily: 'sans-serif',
+                  background: '#0f172a',
                   border: 'none',
-                  boxShadow: '0 1px 3px rgba(79,70,229,0.3)',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
                 }}
               >
                 Get Started Free
@@ -140,7 +148,7 @@ export function HomePage() {
 
       {/* Hero Section - Two Column Layout */}
       <div style={{
-        padding: '0 96px',
+        padding: '10px 96px 0',
         display: 'flex',
         alignItems: 'center',
         gap: 60,
@@ -148,47 +156,20 @@ export function HomePage() {
       }}>
         {/* Left Column - Text */}
         <div style={{
-          flex: '0 0 520px',
-          maxWidth: 520,
+          flex: '0 0 700px',
+          maxWidth: 700,
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
           transition: 'all 0.6s ease-out',
         }}>
-          {/* Trust badge */}
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 8,
-            padding: '6px 14px 6px 6px',
-            borderRadius: 100,
-            background: '#EEF2FF',
-            marginBottom: 24,
-            fontSize: 13,
-            fontWeight: 500,
-            color: '#4f46e5',
-          }}>
-            <span style={{
-              padding: '2px 8px',
-              borderRadius: 100,
-              background: '#4f46e5',
-              color: '#fff',
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: '0.05em',
-              textTransform: 'uppercase',
-            }}>
-              New
-            </span>
-            ATS-optimized resume builder — try it free
-          </div>
-
           <h1 style={{
-            fontSize: 56,
+            fontSize: 64,
             fontWeight: 800,
             letterSpacing: '-0.04em',
             lineHeight: 1.05,
-            margin: '0 0 20px',
+            margin: '0 0 24px',
             color: '#0f172a',
+            maxWidth: 800,
           }}>
             Build a resume{' '}
             <span style={{
@@ -199,58 +180,59 @@ export function HomePage() {
             }}>
               that works
             </span>
-            <br />
-            as hard as you do
           </h1>
           <p style={{
-            fontSize: 18,
+            fontSize: 20,
             lineHeight: 1.7,
             color: '#64748B',
-            maxWidth: 480,
-            margin: '0 0 36px',
+            maxWidth: 660,
+            margin: '0 0 40px',
           }}>
             A powerful yet minimal resume builder with live preview, 
-            ATS-friendly output, and zero data tracking. 
-            No sign-up required — start building in seconds.
+            ATS-friendly output, and zero data tracking.
           </p>
 
           {/* CTA Buttons */}
           <div style={{ display: 'flex', gap: 12, marginBottom: 40 }}>
-            <a href="/builder" style={{ textDecoration: 'none' }}>
-              <Button
-                size="lg"
-                style={{
-                  fontSize: 16,
-                  padding: '14px 32px',
-                  height: 'auto',
-                  borderRadius: 10,
-                  fontWeight: 600,
-                  gap: 8,
-                  background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-                  border: 'none',
-                  boxShadow: '0 4px 14px rgba(79,70,229,0.4)',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                Start Building Free <ArrowRight style={{ width: 18, height: 18 }} />
-              </Button>
+            <a
+              href="/builder"
+              style={{
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '16px 36px',
+                fontSize: 17,
+                fontWeight: 600,
+                color: '#fff',
+                background: '#0f172a',
+                borderRadius: 10,
+                border: 'none',
+                cursor: 'pointer',
+                letterSpacing: '-0.01em',
+                fontFamily: 'sans-serif',
+              }}
+            >
+              Start Building
             </a>
-            <a href="/builder" style={{ textDecoration: 'none' }}>
-              <Button
-                variant="outline"
-                size="lg"
-                style={{
-                  fontSize: 16,
-                  padding: '14px 28px',
-                  height: 'auto',
-                  borderRadius: 10,
-                  fontWeight: 500,
-                  gap: 8,
-                  border: '1.5px solid #E2E8F0',
-                }}
-              >
-                View Demo <Eye style={{ width: 18, height: 18 }} />
-              </Button>
+            <a
+              href="/builder"
+              style={{
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '16px 32px',
+                fontSize: 17,
+                fontWeight: 500,
+                color: '#0f172a',
+                background: '#fff',
+                borderRadius: 10,
+                border: '1.5px solid #E2E8F0',
+                cursor: 'pointer',
+                letterSpacing: '-0.01em',
+                fontFamily: 'sans-serif',
+              }}
+            >
+              View Demo
             </a>
           </div>
 
@@ -526,6 +508,7 @@ export function HomePage() {
                 borderRadius: 10,
                 fontWeight: 600,
                 gap: 8,
+                fontFamily: 'sans-serif',
                 background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
                 border: 'none',
                 boxShadow: '0 4px 14px rgba(79,70,229,0.4)',
