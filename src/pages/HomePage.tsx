@@ -49,7 +49,7 @@ function ResumeCard({ templateId, width, height }: { templateId: string; width: 
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         border: '1px solid rgba(255, 255, 255, 0.5)',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
+        boxShadow: '0 24px 64px rgba(30, 41, 59, 0.45)',
         overflow: 'visible',
         padding: 16,
         boxSizing: 'border-box',
@@ -143,6 +143,8 @@ const features = [
 
 export function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
+  const [startHover, setStartHover] = useState(false);
+  const [getStartedHover, setGetStartedHover] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -287,8 +289,16 @@ export function HomePage() {
             maxWidth: 760,
             margin: '0 0 16px',
           }}>
-            A powerful yet minimal resume builder with live preview, 
-            ATS-friendly output, and zero data tracking.
+            Struggling with messy, inconsistent resumes and time-consuming manual formatting?
+          </p>
+          <p style={{
+            fontSize: 20,
+            lineHeight: 1.7,
+            color: '#64748B',
+            maxWidth: 760,
+            margin: '0 0 16px',
+          }}>
+            ResumeForge helps you rapidly create polished, professional resumes that impress recruiters and win more interviews.
           </p>
 
           {/* CTA Buttons */}
@@ -303,13 +313,16 @@ export function HomePage() {
                 fontSize: 17,
                 fontWeight: 600,
                 color: '#fff',
-                background: '#0f172a',
+                background: startHover ? '#334155' : '#0f172a',
                 borderRadius: 10,
                 border: 'none',
                 cursor: 'pointer',
                 letterSpacing: '-0.01em',
                 fontFamily: 'sans-serif',
+                transition: 'background 0.2s ease',
               }}
+              onMouseEnter={() => setStartHover(true)}
+              onMouseLeave={() => setStartHover(false)}
             >
               Start Building
             </a>
@@ -325,7 +338,7 @@ export function HomePage() {
                 color: '#0f172a',
                 background: '#fff',
                 borderRadius: 10,
-                border: '1.5px solid #E2E8F0',
+                border: '1.5px solid #0f172a',
                 cursor: 'pointer',
                 letterSpacing: '-0.01em',
                 fontFamily: 'sans-serif',
@@ -422,13 +435,13 @@ export function HomePage() {
               </div>
               <div style={{
                 position: 'absolute',
-                top: -50,
-                right: -20,
+                top: -80,
+                right: -10,
                 background: '#334155',
                 color: '#fff',
                 padding: '10px 18px',
                 borderRadius: '8px 8px 0px 8px',
-                fontSize: 15,
+                fontSize: 17,
                 fontWeight: 700,
                 animation: 'fadeSlideIn 0.5s ease-out, bounce 2s ease-in-out infinite',
                 zIndex: 10,
