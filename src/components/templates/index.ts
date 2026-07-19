@@ -1,15 +1,17 @@
 import { PremiumTemplate } from './PremiumTemplate';
+import { ModernTemplate } from './ModernTemplate';
+import { MinimalTemplate } from './MinimalTemplate';
+import { ProfessionalTemplate } from './ProfessionalTemplate';
+import { ATSTemplate } from './ATSTemplate';
+import { CreativeTemplate } from './CreativeTemplate';
 import type { ResumeData, Customization, TemplateId } from '@/types/resume';
 
-// All templates use the premium design - the template selector changes
-// the section order and minor styling variations while maintaining
-// the same premium, ATS-friendly foundation.
 const templates: Record<TemplateId, React.FC<{ resume: ResumeData; custom: Customization }>> = {
-  modern: PremiumTemplate,
-  minimal: PremiumTemplate,
-  professional: PremiumTemplate,
-  ats: PremiumTemplate,
-  creative: PremiumTemplate,
+  modern: ModernTemplate,
+  minimal: MinimalTemplate,
+  professional: ProfessionalTemplate,
+  ats: ATSTemplate,
+  creative: CreativeTemplate,
 };
 
 export function getTemplate(id: TemplateId) {

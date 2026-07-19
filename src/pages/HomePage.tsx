@@ -1,14 +1,54 @@
 import { Button } from '@/components/ui';
-import { FileText, ArrowRight, Sparkles, Shield, Download, Eye, Star, Zap, BarChart3, ChevronDown } from 'lucide-react';
-import { useResumeStore } from '@/store/resumeStore';
-import { PremiumTemplate } from '@/components/templates/PremiumTemplate';
-import type { Customization } from '@/types/resume';
+import { FileText, ArrowRight, Sparkles, Shield, Download, Eye, Star, BarChart3, ChevronDown } from 'lucide-react';
+import { getTemplate } from '@/components/templates';
+import { createSampleResume, createSampleResume2, createSampleResume3, createSampleResume4, createSampleResume5 } from '@/data/sampleResume';
+import type { Customization, ResumeData } from '@/types/resume';
 import { useEffect, useState } from 'react';
 
-const defaultCustom: Customization = {
+const customModern: Customization = {
   templateId: 'modern',
   primaryColor: '#2563EB',
   accentColor: '#2563EB',
+  fontFamily: 'Inter',
+  fontSize: 15,
+  lineSpacing: 1.65,
+  sectionSpacing: 36,
+};
+
+const customMinimal: Customization = {
+  templateId: 'minimal',
+  primaryColor: '#059669',
+  accentColor: '#059669',
+  fontFamily: 'Inter',
+  fontSize: 14,
+  lineSpacing: 1.5,
+  sectionSpacing: 28,
+};
+
+const customProfessional: Customization = {
+  templateId: 'professional',
+  primaryColor: '#1E40AF',
+  accentColor: '#1E40AF',
+  fontFamily: 'Georgia',
+  fontSize: 15,
+  lineSpacing: 1.7,
+  sectionSpacing: 40,
+};
+
+const customATS: Customization = {
+  templateId: 'ats',
+  primaryColor: '#6D28D9',
+  accentColor: '#6D28D9',
+  fontFamily: 'Arial',
+  fontSize: 14,
+  lineSpacing: 1.6,
+  sectionSpacing: 32,
+};
+
+const customCreative: Customization = {
+  templateId: 'creative',
+  primaryColor: '#DC2626',
+  accentColor: '#DC2626',
   fontFamily: 'Inter',
   fontSize: 15,
   lineSpacing: 1.65,
@@ -55,8 +95,53 @@ const features = [
   },
 ];
 
+function ResumeCard({ resume, custom }: { resume: ResumeData; custom: Customization }) {
+  const Template = getTemplate(custom.templateId);
+  return (
+    <div style={{
+      border: '1px solid #E2E8F0',
+      borderRadius: 10,
+      overflow: 'hidden',
+      background: '#fff',
+      boxShadow: '0 8px 20px -8px rgba(0,0,0,0.08)',
+      width: 180,
+      height: 220,
+      transition: 'all 0.2s ease',
+      cursor: 'pointer',
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.boxShadow = '0 12px 28px -8px rgba(79,70,229,0.15)';
+      e.currentTarget.style.borderColor = '#C7D2FE';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.boxShadow = '0 8px 20px -8px rgba(0,0,0,0.08)';
+      e.currentTarget.style.borderColor = '#E2E8F0';
+    }}
+    >
+      {/* Mac-style dots */}
+      <div style={{
+        display: 'flex',
+        gap: 4,
+        padding: '6px 10px',
+        borderBottom: '1px solid #F1F5F9',
+        background: '#FAFAFA',
+      }}>
+        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#EF4444' }} />
+        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#F59E0B' }} />
+        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#10B981' }} />
+      </div>
+      <div style={{
+        transform: 'scale(0.18)',
+        transformOrigin: 'top left',
+        width: '555.55%',
+      }}>
+        <Template resume={resume} custom={custom} />
+      </div>
+    </div>
+  );
+}
+
 export function HomePage() {
-  const resume = useResumeStore((s) => s.resume);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -139,7 +224,7 @@ export function HomePage() {
                   boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
                 }}
               >
-                Get Started Free
+                Get Started
               </Button>
             </a>
           </div>
@@ -262,92 +347,37 @@ export function HomePage() {
           </div>
         </div>
 
-        {/* Right Column - Preview */}
+        {/* Right Column - 5 Resume Grid */}
         <div style={{
           flex: 1,
           minWidth: 0,
-          maxHeight: 'calc(100vh - 120px)',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'flex-end',
+          justifyContent: 'center',
+          gap: 16,
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
           transition: 'all 0.6s ease-out 0.2s',
         }}>
+          {/* Top row - 2 resumes */}
           <div style={{
-            position: 'relative',
+            display: 'flex',
+            gap: 16,
+            justifyContent: 'center',
           }}>
-            {/* Decorative background */}
-            <div style={{
-              position: 'absolute',
-              top: '-40px',
-              right: '-40px',
-              width: 500,
-              height: 500,
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 70%)',
-              pointerEvents: 'none',
-            }} />
-            <div style={{
-              position: 'absolute',
-              bottom: '-20px',
-              left: '-20px',
-              width: 300,
-              height: 300,
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(124,58,237,0.04) 0%, transparent 70%)',
-              pointerEvents: 'none',
-            }} />
-
-            {/* Preview card */}
-            <div style={{
-              border: '1px solid #E2E8F0',
-              borderRadius: 12,
-              overflow: 'hidden',
-              background: '#fff',
-              boxShadow: '0 15px 30px -10px rgba(0,0,0,0.1)',
-              position: 'relative',
-              maxWidth: 380,
-              maxHeight: 440,
-            }}>
-              {/* Mac-style dots */}
-              <div style={{
-                display: 'flex',
-                gap: 5,
-                padding: '8px 12px',
-                borderBottom: '1px solid #F1F5F9',
-                background: '#FAFAFA',
-              }}>
-                <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#EF4444' }} />
-                <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#F59E0B' }} />
-                <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#10B981' }} />
-              </div>
-              <div style={{
-                transform: 'scale(0.28)',
-                transformOrigin: 'top left',
-                width: '357.14%',
-              }}>
-                <PremiumTemplate resume={resume} custom={defaultCustom} />
-              </div>
-            </div>
-
-            {/* Floating badge */}
-            <div style={{
-              position: 'absolute',
-              bottom: -10,
-              left: -10,
-              background: '#fff',
-              border: '1px solid #E2E8F0',
-              borderRadius: 8,
-              padding: '8px 12px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              boxShadow: '0 3px 10px rgba(0,0,0,0.06)',
-            }}>
-              <Zap style={{ width: 12, height: 12, color: '#4f46e5' }} />
-              <span style={{ fontSize: 11, fontWeight: 600, color: '#0f172a' }}>ATS Score: 92/100</span>
-            </div>
+            <ResumeCard resume={createSampleResume()} custom={customModern} />
+            <ResumeCard resume={createSampleResume2()} custom={customMinimal} />
+          </div>
+          {/* Bottom row - 3 resumes */}
+          <div style={{
+            display: 'flex',
+            gap: 16,
+            justifyContent: 'center',
+          }}>
+            <ResumeCard resume={createSampleResume3()} custom={customProfessional} />
+            <ResumeCard resume={createSampleResume4()} custom={customATS} />
+            <ResumeCard resume={createSampleResume5()} custom={customCreative} />
           </div>
         </div>
       </div>
