@@ -71,28 +71,6 @@ function ResumeCard({ templateId, width, height }: { templateId: string; width: 
         }}
       />
 
-        {templateId === 'modern' && (
-          <div style={{
-            position: 'absolute',
-            top: 12,
-            right: -48,
-            background: '#334155',
-            color: '#fff',
-            padding: '8px 14px',
-            borderRadius: 8,
-            fontSize: 13,
-            fontWeight: 600,
-            animation: 'fadeSlideIn 0.5s ease-out, bounce 2s ease-in-out infinite',
-            zIndex: 10,
-            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-          }}>
-            <Flag style={{ width: 14, height: 14 }} />
-            Accepted
-          </div>
-        )}
 
       {showTooltip && (
         <div style={{
@@ -214,18 +192,11 @@ export function HomePage() {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div style={{
-                width: 36,
-                height: 36,
-                borderRadius: 8,
-                background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <FileText style={{ width: 18, height: 18, color: '#fff' }} />
-              </div>
-              <span style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em' }}>ResumeForge</span>
+              <img
+                src="/images/logo.png"
+                alt="ResumeForge"
+                style={{ width: 64, height: 64, borderRadius: 12, objectFit: 'contain' }}
+              />
             </div>
             <div style={{ width: 1, height: 24, background: '#E2E8F0' }} />
             <a href="/templates" style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>Resume Templates <ChevronDown style={{ width: 18, height: 18 }} /></a>
@@ -304,10 +275,7 @@ export function HomePage() {
           }}>
             Build a resume that gets{' '}
             <span style={{
-              background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              color: '#0d9488',
             }}>
               noticed by recruiters.
             </span>
@@ -407,9 +375,72 @@ export function HomePage() {
           <div style={{ position: 'relative', width: 520, height: 620, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div style={{ position: 'absolute', left: 0, top: 0, zIndex: 1 }}>
               <ResumeCard templateId="modern" width={400} height={560} />
+              <div style={{
+                position: 'absolute',
+                bottom:  20,
+                left: -30,
+                background: 'rgba(255,255,255,0.95)',
+                backdropFilter: 'blur(8px)',
+                color: '#0f172a',
+                padding: '10px 18px',
+                borderRadius: '0px 8px 0px 8px',
+                fontSize: 15,
+                fontWeight: 700,
+                zIndex: 10,
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                letterSpacing: '-0.01em',
+                borderTop: '2px solid #94A3B8',
+                borderRight: '2px solid #94A3B8',
+                borderBottom: 'none',
+                borderLeft: 'none',
+              }}>
+                Free
+              </div>
             </div>
             <div style={{ position: 'absolute', right: 0, top: 140, zIndex: 2 }}>
               <ResumeCard templateId="professional" width={280} height={392} />
+              <div style={{
+                position: 'absolute',
+                bottom: -40,
+                right: 12,
+                background: 'rgba(255,255,255,0.95)',
+                backdropFilter: 'blur(8px)',
+                color: '#0f172a',
+                padding: '10px 18px',
+                borderRadius: '8px 0px 8px 0px',
+                fontSize: 15,
+                fontWeight: 700,
+                zIndex: 10,
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                letterSpacing: '-0.01em',
+                borderTop: '2px solid #94A3B8',
+                borderLeft: '2px solid #94A3B8',
+                borderBottom: 'none',
+                borderRight: 'none',
+              }}>
+                Template
+              </div>
+              <div style={{
+                position: 'absolute',
+                top: -50,
+                right: -20,
+                background: '#334155',
+                color: '#fff',
+                padding: '10px 18px',
+                borderRadius: '8px 8px 0px 8px',
+                fontSize: 15,
+                fontWeight: 700,
+                animation: 'fadeSlideIn 0.5s ease-out, bounce 2s ease-in-out infinite',
+                zIndex: 10,
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                letterSpacing: '-0.01em',
+              }}>
+                <Flag style={{ width: 18, height: 18 }} />
+                Accepted
+              </div>
             </div>
           </div>
         </div>
@@ -598,18 +629,11 @@ export function HomePage() {
           alignItems: 'center',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <div style={{
-              width: 24,
-              height: 24,
-              borderRadius: 6,
-              background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <FileText style={{ width: 12, height: 12, color: '#fff' }} />
-            </div>
-            <span style={{ fontSize: 14, fontWeight: 600, color: '#0f172a' }}>ResumeForge</span>
+            <img
+              src="/images/logo.png"
+              alt="ResumeForge"
+              style={{ width: 48, height: 48, borderRadius: 10, objectFit: 'contain' }}
+            />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
             <span style={{ fontSize: 13, color: '#94A3B8' }}>Privacy-first resume builder</span>
