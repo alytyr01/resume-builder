@@ -13,16 +13,13 @@ interface TemplatePageProps {
 }
 
 export function TemplatePage({ title, description, features, useCases, tips, image }: TemplatePageProps) {
-  const sampleResume = createPlaceholderResume();
-  const sampleCustom = {
-    templateId: 'modern',
-    primaryColor: '#2563EB',
-    accentColor: '#2563EB',
-    fontFamily: 'Inter',
-    fontSize: 14,
-    lineSpacing: 1.5,
-    sectionSpacing: 28,
-  } as const;
+  const sampleResumes = [createPlaceholderResume(), createPlaceholderResume(), createPlaceholderResume(), createPlaceholderResume()];
+  const sampleCustoms = [
+    { templateId: 'modern', primaryColor: '#60A5FA', accentColor: '#60A5FA', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
+    { templateId: 'modern', primaryColor: '#34D399', accentColor: '#34D399', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
+    { templateId: 'modern', primaryColor: '#F87171', accentColor: '#F87171', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
+    { templateId: 'modern', primaryColor: '#A78BFA', accentColor: '#A78BFA', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
+  ];
 
   return (
     <div style={{
@@ -62,19 +59,16 @@ export function TemplatePage({ title, description, features, useCases, tips, ima
           margin: '0 auto',
         }}>
           {/* Left side - Text content */}
-          <div style={{
-            flex: 1,
-            paddingRight: 20,
-          }}>
-            <div style={{
-              fontSize: 14,
-              color: '#64748b',
-              marginBottom: 12,
-            }}>
-              <a href="/" style={{ color: '#64748b', textDecoration: 'none' }}>Home</a>
-              <span style={{ margin: '0 8px' }}>/</span>
-              <span>Modern Resume Examples</span>
-            </div>
+            <div style={{ flex: 1, paddingRight: 20 }}>
+              <div style={{
+                fontSize: 14,
+                color: '#64748b',
+                marginBottom: 12,
+              }}>
+                <a href="/" style={{ color: '#64748b', textDecoration: 'none' }}>Home</a>
+                <span style={{ margin: '0 8px' }}>/</span>
+                <span>Modern Resume Examples</span>
+              </div>
             <h1 style={{
               fontSize: 64,
               fontWeight: 800,
@@ -287,12 +281,12 @@ export function TemplatePage({ title, description, features, useCases, tips, ima
         }}>
           {features.map((feature, index) => {
             const icons = [
-              <Layout key="layout" style={{ width: 28, height: 28, color: '#4f46e5' }} />,
-              <Target key="target" style={{ width: 28, height: 28, color: '#4f46e5' }} />,
-              <Briefcase key="briefcase" style={{ width: 28, height: 28, color: '#4f46e5' }} />,
-              <FileText key="filetext" style={{ width: 28, height: 28, color: '#4f46e5' }} />,
-              <Palette key="palette" style={{ width: 28, height: 28, color: '#4f46e5' }} />,
-              <Sparkles key="sparkles" style={{ width: 28, height: 28, color: '#4f46e5' }} />,
+              <Layout key="layout" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <Target key="target" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <Briefcase key="briefcase" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <FileText key="filetext" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <Palette key="palette" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <Sparkles key="sparkles" style={{ width: 28, height: 28, color: '#0f172a' }} />,
             ];
             return (
               <div key={index} style={{
@@ -356,45 +350,28 @@ export function TemplatePage({ title, description, features, useCases, tips, ima
           gridTemplateColumns: 'repeat(4, 1fr)',
           gap: 30,
         }}>
-          {[1, 2, 3, 4].map((num) => (
-            <div key={num}>
+          {sampleResumes.map((sampleResume, index) => (
+            <div key={index}>
               <div style={{
                 boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
                 background: '#fff',
-                borderRadius: 12,
                 overflow: 'hidden',
                 aspectRatio: '8.5/11',
                 position: 'relative',
                 height: 500,
               }}>
                 <div style={{
-                  transform: 'scale(0.48)',
+                  transform: 'scale(0.45)',
                   transformOrigin: 'top left',
                   position: 'absolute',
                   top: 0,
                   left: 0,
-                  width: '208%',
-                  height: '208%',
+                  width: '222%',
+                  height: '222%',
                 }}>
-                  <ModernTemplate resume={sampleResume} custom={sampleCustom} />
+                  <ModernTemplate resume={sampleResume} custom={sampleCustoms[index]} />
                 </div>
               </div>
-              <h3 style={{
-                fontSize: 20,
-                fontWeight: 700,
-                margin: '16px 0 10px',
-                color: '#0f172a',
-              }}>
-                Example {num}
-              </h3>
-              <p style={{
-                fontSize: 15,
-                lineHeight: 1.6,
-                color: '#64748B',
-                margin: 0,
-              }}>
-                Professionally crafted {title.toLowerCase()} resume example.
-              </p>
             </div>
           ))}
         </div>
@@ -433,7 +410,7 @@ export function TemplatePage({ title, description, features, useCases, tips, ima
                 height: 44,
                 borderRadius: '50%',
                 background: '#EEF2FF',
-                color: '#4f46e5',
+                color: '#0f172a',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

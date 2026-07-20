@@ -31,6 +31,7 @@ const templateData: Record<string, { title: string; description: string; feature
       'UX/UI designers and product managers',
       'Startup employees and tech entrepreneurs',
       'Creative professionals and agencies',
+      'Remote workers and digital nomads',
     ],
     tips: [
       'Use a professional email address that includes your name',

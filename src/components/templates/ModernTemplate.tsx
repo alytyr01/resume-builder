@@ -35,7 +35,7 @@ export function ModernTemplate({ resume, custom }: Props) {
         {/* Summary */}
         {visibleSections.find((s) => s.id === 'summary') && summary && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 16, fontWeight: 600, color: pColor, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 1 }}>Summary</h2>
+            <h2 style={{ fontSize: 16, fontWeight: 600, color: '#0f172a', margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 1 }}>Summary</h2>
             <p style={{ fontSize: custom.fontSize, lineHeight: custom.lineSpacing, color: '#475569', margin: 0 }}>{summary}</p>
           </div>
         )}
@@ -43,7 +43,7 @@ export function ModernTemplate({ resume, custom }: Props) {
         {/* Experience */}
         {visibleSections.find((s) => s.id === 'experience') && experience.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 16, fontWeight: 600, color: pColor, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Experience</h2>
+            <h2 style={{ fontSize: 16, fontWeight: 600, color: '#0f172a', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Experience</h2>
             {experience.map((exp) => (
               <div key={exp.id} style={{ marginBottom: 16 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
@@ -65,7 +65,7 @@ export function ModernTemplate({ resume, custom }: Props) {
         {/* Education */}
         {visibleSections.find((s) => s.id === 'education') && education.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 16, fontWeight: 600, color: pColor, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Education</h2>
+            <h2 style={{ fontSize: 16, fontWeight: 600, color: '#0f172a', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Education</h2>
             {education.map((edu) => (
               <div key={edu.id} style={{ marginBottom: 12 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -85,10 +85,10 @@ export function ModernTemplate({ resume, custom }: Props) {
         {/* Skills */}
         {visibleSections.find((s) => s.id === 'skills') && skills.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 16, fontWeight: 600, color: pColor, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Skills</h2>
+            <h2 style={{ fontSize: 16, fontWeight: 600, color: '#0f172a', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Skills</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {skills.map((skill) => (
-                <span key={skill.id} style={{ background: `${pColor}15`, color: pColor, padding: '4px 12px', borderRadius: 20, fontSize: custom.fontSize - 1 }}>
+                <span key={skill.id} style={{ background: '#f1f5f9', color: '#475569', padding: '4px 12px', fontSize: custom.fontSize - 1 }}>
                   {skill.name}
                 </span>
               ))}
@@ -99,12 +99,12 @@ export function ModernTemplate({ resume, custom }: Props) {
         {/* Projects */}
         {visibleSections.find((s) => s.id === 'projects') && projects.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 16, fontWeight: 600, color: pColor, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Projects</h2>
+            <h2 style={{ fontSize: 16, fontWeight: 600, color: '#0f172a', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Projects</h2>
             {projects.map((proj) => (
               <div key={proj.id} style={{ marginBottom: 12 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <strong>{proj.name}</strong>
-                  {proj.link && <span style={{ fontSize: 12, color: pColor }}>{proj.link}</span>}
+                  {proj.link && <span style={{ fontSize: 12, color: '#64748b' }}>{proj.link}</span>}
                 </div>
                 {proj.tech && <p style={{ fontSize: 12, color: '#94a3b8', margin: '2px 0' }}>{proj.tech}</p>}
                 <p style={{ fontSize: custom.fontSize - 1, color: '#475569', margin: 0 }}>{proj.description}</p>
@@ -116,7 +116,7 @@ export function ModernTemplate({ resume, custom }: Props) {
         {/* Certifications */}
         {visibleSections.find((s) => s.id === 'certifications') && certifications.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 16, fontWeight: 600, color: pColor, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Certifications</h2>
+            <h2 style={{ fontSize: 16, fontWeight: 600, color: '#0f172a', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Certifications</h2>
             {certifications.map((cert) => (
               <div key={cert.id} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
                 <span><strong>{cert.name}</strong> — {cert.issuer}</span>
@@ -129,7 +129,7 @@ export function ModernTemplate({ resume, custom }: Props) {
         {/* Languages */}
         {visibleSections.find((s) => s.id === 'languages') && languages.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 16, fontWeight: 600, color: pColor, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Languages</h2>
+            <h2 style={{ fontSize: 16, fontWeight: 600, color: '#0f172a', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Languages</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
               {languages.map((lang) => (
                 <span key={lang.id} style={{ fontSize: custom.fontSize - 1 }}><strong>{lang.name}</strong> — {lang.proficiency}</span>
@@ -141,7 +141,7 @@ export function ModernTemplate({ resume, custom }: Props) {
         {/* References */}
         {visibleSections.find((s) => s.id === 'references') && references.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 16, fontWeight: 600, color: pColor, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>References</h2>
+            <h2 style={{ fontSize: 16, fontWeight: 600, color: '#0f172a', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>References</h2>
             {references.map((ref) => (
               <div key={ref.id} style={{ marginBottom: 8 }}>
                 <strong>{ref.name}</strong>
@@ -158,7 +158,7 @@ export function ModernTemplate({ resume, custom }: Props) {
           if (!meta?.visible) return null;
           return (
             <div key={cs.id} style={{ marginBottom: custom.sectionSpacing }}>
-              <h2 style={{ fontSize: 16, fontWeight: 600, color: pColor, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>{cs.title}</h2>
+              <h2 style={{ fontSize: 16, fontWeight: 600, color: '#0f172a', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>{cs.title}</h2>
               {cs.items.map((item) => (
                 <div key={item.id} style={{ marginBottom: 10 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
