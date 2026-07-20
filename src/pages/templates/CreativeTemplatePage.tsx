@@ -350,12 +350,12 @@ export function CreativeTemplatePage() {
                 justifyContent: 'center',
                 flexShrink: 0,
               }}>
-                {index === 0 && <Sparkles style={{ width: 28, height: 28, color: '#7C3AED' }} />}
-                {index === 1 && <Layout style={{ width: 28, height: 28, color: '#7C3AED' }} />}
-                {index === 2 && <Palette style={{ width: 28, height: 28, color: '#7C3AED' }} />}
-                {index === 3 && <Briefcase style={{ width: 28, height: 28, color: '#7C3AED' }} />}
-                {index === 4 && <FileText style={{ width: 28, height: 28, color: '#7C3AED' }} />}
-                {index === 5 && <Crown style={{ width: 28, height: 28, color: '#7C3AED' }} />}
+                {index === 0 && <Sparkles style={{ width: 28, height: 28, color: '#0f172a' }} />}
+                {index === 1 && <Layout style={{ width: 28, height: 28, color: '#0f172a' }} />}
+                {index === 2 && <Palette style={{ width: 28, height: 28, color: '#0f172a' }} />}
+                {index === 3 && <Briefcase style={{ width: 28, height: 28, color: '#0f172a' }} />}
+                {index === 4 && <FileText style={{ width: 28, height: 28, color: '#0f172a' }} />}
+                {index === 5 && <Crown style={{ width: 28, height: 28, color: '#0f172a' }} />}
               </div>
               <div>
                 <div style={{
@@ -449,7 +449,7 @@ export function CreativeTemplatePage() {
                 height: 44,
                 borderRadius: '50%',
                 background: '#F3E8FF',
-                color: '#7C3AED',
+                color: '#0f172a',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -497,7 +497,7 @@ export function CreativeTemplatePage() {
                 width: 32,
                 height: 32,
                 borderRadius: '50%',
-                background: '#7C3AED',
+                background: '#0f172a',
                 color: '#fff',
                 display: 'flex',
                 alignItems: 'center',

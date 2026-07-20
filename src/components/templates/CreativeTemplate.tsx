@@ -31,7 +31,7 @@ export function CreativeTemplate({ resume, custom }: Props) {
         {/* Skills in sidebar */}
         {visibleSections.find((s) => s.id === 'skills') && skills.length > 0 && (
           <div style={{ marginBottom: 20 }}>
-            <h2 style={{ fontSize: 12, fontWeight: 600, margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: 1.5, opacity: 0.8 }}>Skills</h2>
+            <h2 style={{ fontSize: 12, fontWeight: 600, margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: 1.5, opacity: 0.8, color: '#94a3b8' }}>Skills</h2>
             {skills.map((s) => (
               <div key={s.id} style={{ marginBottom: 8 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
@@ -49,7 +49,7 @@ export function CreativeTemplate({ resume, custom }: Props) {
         {/* Languages in sidebar */}
         {visibleSections.find((s) => s.id === 'languages') && languages.length > 0 && (
           <div style={{ marginBottom: 20 }}>
-            <h2 style={{ fontSize: 12, fontWeight: 600, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 1.5, opacity: 0.8 }}>Languages</h2>
+            <h2 style={{ fontSize: 12, fontWeight: 600, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 1.5, opacity: 0.8, color: '#94a3b8' }}>Languages</h2>
             {languages.map((l) => (
               <div key={l.id} style={{ fontSize: 11, marginBottom: 4 }}>{l.name} — {l.proficiency}</div>
             ))}
@@ -59,7 +59,7 @@ export function CreativeTemplate({ resume, custom }: Props) {
         {/* Certifications in sidebar */}
         {visibleSections.find((s) => s.id === 'certifications') && certifications.length > 0 && (
           <div>
-            <h2 style={{ fontSize: 12, fontWeight: 600, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 1.5, opacity: 0.8 }}>Certifications</h2>
+            <h2 style={{ fontSize: 12, fontWeight: 600, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 1.5, opacity: 0.8, color: '#94a3b8' }}>Certifications</h2>
             {certifications.map((cert) => (
               <div key={cert.id} style={{ fontSize: 11, marginBottom: 4 }}>{cert.name}</div>
             ))}
@@ -71,14 +71,14 @@ export function CreativeTemplate({ resume, custom }: Props) {
       <div style={{ flex: 1, padding: '32px 28px' }}>
         {visibleSections.find((s) => s.id === 'summary') && summary && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 14, fontWeight: 600, color: pColor, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 1 }}>About</h2>
+            <h2 style={{ fontSize: 14, fontWeight: 600, color: '#94a3b8', margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 1 }}>About</h2>
             <p style={{ fontSize: custom.fontSize - 1, color: '#475569', margin: 0, lineHeight: custom.lineSpacing }}>{summary}</p>
           </div>
         )}
 
         {visibleSections.find((s) => s.id === 'experience') && experience.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 14, fontWeight: 600, color: pColor, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Experience</h2>
+            <h2 style={{ fontSize: 14, fontWeight: 600, color: '#94a3b8', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Experience</h2>
             {experience.map((exp) => (
               <div key={exp.id} style={{ marginBottom: 14, borderLeft: `2px solid ${pColor}30`, paddingLeft: 12 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -94,7 +94,7 @@ export function CreativeTemplate({ resume, custom }: Props) {
 
         {visibleSections.find((s) => s.id === 'education') && education.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 14, fontWeight: 600, color: pColor, margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: 1 }}>Education</h2>
+            <h2 style={{ fontSize: 14, fontWeight: 600, color: '#94a3b8', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: 1 }}>Education</h2>
             {education.map((edu) => (
               <div key={edu.id} style={{ marginBottom: 8 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -109,7 +109,7 @@ export function CreativeTemplate({ resume, custom }: Props) {
 
         {visibleSections.find((s) => s.id === 'projects') && projects.length > 0 && (
           <div style={{ marginBottom: custom.sectionSpacing }}>
-            <h2 style={{ fontSize: 14, fontWeight: 600, color: pColor, margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: 1 }}>Projects</h2>
+            <h2 style={{ fontSize: 14, fontWeight: 600, color: '#94a3b8', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: 1 }}>Projects</h2>
             {projects.map((proj) => (
               <div key={proj.id} style={{ marginBottom: 8 }}>
                 <strong>{proj.name}</strong>
@@ -125,7 +125,7 @@ export function CreativeTemplate({ resume, custom }: Props) {
           if (!meta?.visible) return null;
           return (
             <div key={cs.id} style={{ marginBottom: custom.sectionSpacing }}>
-              <h2 style={{ fontSize: 14, fontWeight: 600, color: pColor, margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: 1 }}>{cs.title}</h2>
+            <h2 style={{ fontSize: 14, fontWeight: 600, color: '#94a3b8', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: 1 }}>{cs.title}</h2>
               {cs.items.map((item) => (
                 <div key={item.id} style={{ marginBottom: 6 }}>
                   <strong>{item.title}</strong>

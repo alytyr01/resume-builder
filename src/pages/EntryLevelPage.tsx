@@ -451,7 +451,7 @@ export function EntryLevelPage() {
                 width: 32,
                 height: 32,
                 borderRadius: '50%',
-                background: '#3B82F6',
+                background: '#0f172a',
                 color: '#fff',
                 display: 'flex',
                 alignItems: 'center',
