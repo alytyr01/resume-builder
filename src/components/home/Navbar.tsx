@@ -33,13 +33,15 @@ export function Navbar({ dropdowns }: NavbarProps) {
         alignItems: 'center',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <img
-              src="/images/logo.png"
-              alt="ResumeForge"
-              style={{ width: 64, height: 64, borderRadius: 16, objectFit: 'contain' }}
-            />
-          </div>
+          <a href="/" style={{ textDecoration: 'none' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <img
+                src="/images/logo.png"
+                alt="CVora"
+                style={{ width: 64, height: 64, borderRadius: 16, objectFit: 'contain' }}
+              />
+            </div>
+          </a>
           <div style={{ width: 1, height: 24, background: '#E2E8F0' }} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
             <div

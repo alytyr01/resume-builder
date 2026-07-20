@@ -10,11 +10,13 @@ export function Footer() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 40 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', marginBottom: 24 }}>
-              <img
-                src="/images/logo.png"
-                alt="ResumeForge"
-                style={{ width: 48, height: 48, borderRadius: 10, objectFit: 'contain' }}
-              />
+              <a href="/">
+                <img
+                  src="/images/logo.png"
+                  alt="ResumeForge"
+                  style={{ width: 48, height: 48, borderRadius: 10, objectFit: 'contain' }}
+                />
+              </a>
             </div>
             <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none' }}>
