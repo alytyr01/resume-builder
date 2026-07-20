@@ -2,6 +2,7 @@ import { Navbar } from '@/components/home';
 import { ModernTemplate } from '@/components/templates/ModernTemplate';
 import { createPlaceholderResume } from '@/data/placeholderResume';
 import { Layout, FileText, Briefcase, Target, Palette, Crown, Star, Zap, Sparkles } from 'lucide-react';
+import { useState } from 'react';
 
 interface TemplatePageProps {
   title: string;
@@ -13,6 +14,7 @@ interface TemplatePageProps {
 }
 
 export function TemplatePage({ title, description, features, useCases, tips, image }: TemplatePageProps) {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const sampleResumes = [createPlaceholderResume(), createPlaceholderResume(), createPlaceholderResume(), createPlaceholderResume()];
   const sampleCustoms = [
     { templateId: 'modern', primaryColor: '#60A5FA', accentColor: '#60A5FA', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
@@ -221,6 +223,10 @@ export function TemplatePage({ title, description, features, useCases, tips, ima
           50% {
             transform: translateY(-10px);
           }
+        }
+
+        .faq-answer {
+          transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         }
       `}</style>
 
@@ -442,39 +448,136 @@ export function TemplatePage({ title, description, features, useCases, tips, ima
           Pro Tips
         </h2>
         <div style={{
-          background: '#fff',
-          padding: 48,
-          borderRadius: 20,
-          border: '1px solid #E2E8F0',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.04)',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 24,
         }}>
-          <ul style={{
-            listStyle: 'none',
-            padding: 0,
-            margin: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 24,
-          }}>
-            {tips.map((tip, index) => (
-              <li key={index} style={{
-                fontSize: 18,
-                lineHeight: 1.7,
-                color: '#475569',
+          {tips.map((tip, index) => (
+            <div key={index} style={{
+              background: '#fff',
+              padding: 32,
+              borderRadius: 16,
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.04)',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: 16,
+            }}>
+              <span style={{
+                width: 32,
+                height: 32,
+                borderRadius: '50%',
+                background: '#0f172a',
+                color: '#fff',
                 display: 'flex',
-                alignItems: 'flex-start',
-                gap: 18,
-              }}>
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 16,
+                fontWeight: 700,
+                flexShrink: 0,
+              }}>{index + 1}</span>
+              <span style={{
+                fontSize: 16,
+                lineHeight: 1.6,
+                color: '#475569',
+              }}>{tip}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div style={{
+        padding: '0 96px 80px',
+      }}>
+        <h2 style={{
+          fontSize: 40,
+          fontWeight: 700,
+          margin: '0 0 32px',
+          color: '#0f172a',
+        }}>
+          Frequently Asked Questions
+        </h2>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+        }}>
+          {[
+            {
+              question: 'What is a modern resume template?',
+              answer: 'A modern resume template features clean lines, contemporary typography, and strategic use of accent colors. It emphasizes readability and visual hierarchy while maintaining a professional appearance that stands out to recruiters.'
+            },
+            {
+              question: 'Are modern resume templates ATS-friendly?',
+              answer: 'Yes! Our modern templates are designed to be both visually appealing and ATS-friendly. They use standard section headings and clean formatting that automated systems can easily parse.'
+            },
+            {
+              question: 'What colors work best for a modern resume?',
+              answer: 'Modern resumes typically use one or two accent colors strategically. Common choices include navy blue, teal, purple, or deep green. The key is to use color sparingly to highlight important elements without overwhelming the reader.'
+            },
+            {
+              question: 'How long should a modern resume be?',
+              answer: 'Ideally one page for early-career professionals and two pages maximum for those with extensive experience. Modern templates are designed to make efficient use of space while maintaining readability.'
+            },
+            {
+              question: 'Should I include a photo on my modern resume?',
+              answer: 'In most countries, no. Unless you\'re applying for a role where appearance is relevant (modeling, acting, etc.), it\'s best to focus on content and let your skills and experience speak for themselves.'
+            },
+            {
+              question: 'What fonts are best for modern resumes?',
+              answer: 'Sans-serif fonts like Inter, Roboto, or Open Sans work best for modern resumes. They provide excellent readability on both screen and print while maintaining a clean, contemporary look.'
+            },
+          ].map((faq, index) => (
+            <div key={index} style={{
+              background: '#fff',
+              borderRadius: 16,
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+              overflow: 'hidden',
+            }}>
+              <div
+                onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                style={{
+                  padding: '24px 28px',
+                  fontSize: 18,
+                  fontWeight: 600,
+                  color: '#0f172a',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  userSelect: 'none',
+                }}
+              >
+                <span>{faq.question}</span>
                 <span style={{
-                  color: '#0d9488',
-                  fontWeight: 700,
+                  color: '#64748b',
                   fontSize: 24,
-                  flexShrink: 0,
-                }}>•</span>
-                {tip}
-              </li>
-            ))}
-          </ul>
+                  lineHeight: 1,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 24,
+                  height: 24,
+                  transition: 'transform 0.3s ease',
+                  transform: openFaq === index ? 'rotate(45deg)' : 'rotate(0deg)',
+                }}>+</span>
+              </div>
+              <div className="faq-answer" style={{
+                maxHeight: openFaq === index ? '200px' : '0',
+                overflow: 'hidden',
+                opacity: openFaq === index ? 1 : 0,
+              }}>
+                <p style={{
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: '#475569',
+                  margin: '0 24px 24px 24px',
+                }}>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
