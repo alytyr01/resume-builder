@@ -1,197 +1,17 @@
 import { Navbar, Footer } from '@/components/home';
 import { ModernTemplate } from '@/components/templates/ModernTemplate';
 import { createPlaceholderResume } from '@/data/placeholderResume';
-import { Layout, FileText, Briefcase, Target, Palette, Crown, Star, Zap, Sparkles } from 'lucide-react';
+import { Layout, Star } from 'lucide-react';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
-interface TemplatePageProps {
-  title: string;
-  description: string;
-  features: string[];
-  useCases: string[];
-  tips: string[];
-  image: string;
-}
-
-const templateData: Record<string, { title: string; description: string; features: string[]; useCases: string[]; tips: string[]; image: string }> = {
-  modern: {
-    title: 'Modern',
-    description: 'Clean, modern design with a focus on readability and contemporary aesthetics. Perfect for tech professionals and creative roles.',
-    image: '/images/resume1.webp',
-    features: [
-      'Clean and minimal layout with modern typography',
-      'Emphasis on skills and achievements',
-      'Perfect for tech, design, and marketing roles',
-      'Contemporary visual design with accent colors',
-      'Customizable color schemes',
-      'Professional yet creative appearance',
-    ],
-    useCases: [
-      'Software engineers and developers',
-      'Digital marketers and SEO specialists',
-      'UX/UI designers and product managers',
-      'Startup employees and tech entrepreneurs',
-      'Creative professionals and agencies',
-      'Remote workers and digital nomads',
-    ],
-    tips: [
-      'Use a professional email address that includes your name',
-      'Quantify achievements with metrics and numbers whenever possible',
-      'Keep the resume to 1-2 pages maximum for optimal readability',
-      'Use action verbs to describe your accomplishments',
-      'Tailor your skills section to match the job requirements',
-      'Include relevant projects that demonstrate your capabilities',
-    ],
-  },
-  minimal: {
-    title: 'Minimal',
-    description: 'Simple, elegant layout that lets your experience take center stage. Ideal for traditional industries and formal positions.',
-    image: '/images/resume1.webp',
-    features: [
-      'Ultra-clean design with maximum white space',
-      'Focus on content over decoration',
-      'Suitable for conservative industries',
-      'Easy to read and scan quickly',
-      'Timeless professional appearance',
-      'Minimal distractions for recruiters',
-    ],
-    useCases: [
-      'Finance and banking professionals',
-      'Legal advisors and consultants',
-      'Healthcare administrators',
-      'Academics and researchers',
-      'Government and public sector',
-    ],
-    tips: [
-      'Use a traditional font like Times New Roman or Georgia',
-      'Stick to black and white color scheme',
-      'Ensure consistent formatting throughout',
-      'Use bullet points for easy scanning',
-      'Focus on achievements rather than responsibilities',
-      'Keep design elements to an absolute minimum',
-    ],
-  },
-  professional: {
-    title: 'Professional',
-    description: 'Corporate, formal style designed for executive and senior-level positions. Conveys authority and professionalism.',
-    image: '/images/resume2.png',
-    features: [
-      'Traditional corporate layout',
-      'Formal and authoritative appearance',
-      'Ideal for executive and senior roles',
-      'Emphasis on experience and leadership',
-      'Conservative color scheme',
-      'Perfect for finance, law, and consulting',
-    ],
-    useCases: [
-      'C-level executives and directors',
-      'Senior managers and department heads',
-      'Consultants and advisors',
-      'Lawyers and legal professionals',
-      'Financial services professionals',
-    ],
-    tips: [
-      'Highlight leadership experience and achievements',
-      'Use a classic, professional font',
-      'Include executive summary at the top',
-      'Show career progression clearly',
-      'Emphasize results and impact',
-      'Keep formatting conservative and traditional',
-    ],
-  },
-  ats: {
-    title: 'ATS',
-    description: 'ATS-optimized resume template designed to pass automated screening systems. Clean structure with standard formatting that ensures your resume gets seen by recruiters.',
-    image: '/images/resume1.webp',
-    features: [
-      'Optimized for Applicant Tracking Systems',
-      'Standard section headings for easy parsing',
-      'No complex formatting or graphics',
-      'Keyword-friendly structure',
-      'High compatibility with all ATS software',
-      'Increases chances of passing initial screening',
-    ],
-    useCases: [
-      'Large corporate job applications',
-      'Government positions',
-      'Fortune 500 companies',
-      'Online job board submissions',
-      'Any role requiring ATS screening',
-    ],
-    tips: [
-      'Use standard section headings like "Experience" and "Education"',
-      'Avoid tables, columns, and text boxes',
-      'Include keywords from the job description',
-      'Use common file formats like PDF or Word',
-      'Don\'t use headers and footers for critical information',
-      'Test your resume with ATS simulators before submitting',
-    ],
-  },
-  creative: {
-    title: 'Creative',
-    description: 'Bold, eye-catching look for designers, artists, and creative professionals. Showcases your unique personality and style.',
-    image: '/images/resume1.webp',
-    features: [
-      'Bold and distinctive visual design',
-      'Perfect for creative industries',
-      'Shows personality and creativity',
-      'Unique layout that stands out',
-      'Great for designers and artists',
-      'Memorable presentation',
-    ],
-    useCases: [
-      'Graphic designers and illustrators',
-      'Marketing and advertising professionals',
-      'Web designers and developers',
-      'Photographers and videographers',
-      'Creative directors and artists',
-    ],
-    tips: [
-      'Showcase your portfolio alongside the resume',
-      'Use color strategically to highlight key sections',
-      'Include links to your online portfolio or Behance',
-      'Let your personality shine through the design',
-      'Balance creativity with readability',
-      'Use unique but professional fonts',
-    ],
-  },
-  premium: {
-    title: 'Premium',
-    description: 'Most popular choice with sophisticated styling and attention to detail. Perfect for making a lasting impression.',
-    image: '/images/resume1.webp',
-    features: [
-      'Premium and sophisticated design',
-      'Attention to detail in every element',
-      'Perfect for high-level positions',
-      'Combines professionalism with style',
-      'Most popular among users',
-      'Excellent for any industry',
-    ],
-    useCases: [
-      'Senior-level job applications',
-      'Freelancers and consultants',
-      'Startup founders and entrepreneurs',
-      'Sales and business development',
-      'Any role where you want to stand out',
-    ],
-    tips: [
-      'Invest in premium paper for printed versions',
-      'Use subtle design elements that convey quality',
-      'Ensure perfect alignment and spacing',
-      'Include a professional headshot if appropriate',
-      'Use elegant typography and color schemes',
-      'Proofread meticulously to maintain premium feel',
-    ],
-  },
-};
-
-export function TemplatePage() {
-  const { templateId } = useParams<{ templateId: string }>();
-  const template = templateData[templateId || 'modern'] || templateData['modern'];
-  const { title, description, features, useCases, tips, image } = template;
+export function ModernTemplatePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const sampleResumes = [createPlaceholderResume(), createPlaceholderResume(), createPlaceholderResume(), createPlaceholderResume()];
+  const sampleResumes = [
+    createPlaceholderResume(),
+    createPlaceholderResume(),
+    createPlaceholderResume(),
+    createPlaceholderResume()
+  ];
   const sampleCustoms = [
     { templateId: 'modern', primaryColor: '#60A5FA', accentColor: '#60A5FA', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
     { templateId: 'modern', primaryColor: '#34D399', accentColor: '#34D399', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
@@ -199,16 +19,7 @@ export function TemplatePage() {
     { templateId: 'modern', primaryColor: '#A78BFA', accentColor: '#A78BFA', fontFamily: 'Inter', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
   ];
 
-  const isATS = title === 'ATS';
-  
-  const aboutSection = isATS ? {
-    heading: 'About ATS Resume Templates',
-    paragraphs: [
-      'ATS resume templates are specifically designed to pass through Applicant Tracking Systems. These templates use clean, standard formatting that automated systems can easily parse, ensuring your resume reaches human recruiters.',
-      'The ATS template prioritizes compatibility over creativity, using standard section headings, simple layouts, and keyword-friendly structures. This approach maximizes your chances of passing the initial automated screening that many large companies use.',
-      'ATS templates are essential for applying to large corporations, government positions, and fortune 500 companies that receive thousands of applications. By using an ATS-optimized template, you ensure your qualifications are properly parsed and the chance of getting seen by hiring managers.'
-    ]
-  } : {
+  const aboutSection = {
     heading: 'About Modern Resume Templates',
     paragraphs: [
       'Modern resume templates are designed with contemporary design principles that emphasize clean lines, strategic use of white space, and a focus on content hierarchy. These templates are perfect for today\'s job market where recruiters spend an average of just 7-8 seconds scanning each resume.',
@@ -217,40 +28,10 @@ export function TemplatePage() {
     ]
   };
 
-  const heroDescription1 = isATS 
-    ? 'ATS-optimized design with standard formatting that passes automated screening systems. Perfect for corporate job applications and Fortune 500 companies.'
-    : 'Clean, modern design with a focus on readability and contemporary aesthetics. Perfect for tech professionals and creative roles.';
-  
-  const heroDescription2 = isATS
-    ? 'Featuring clean structure, standard section headings, and keyword-friendly layout, this template ensures your resume gets parsed correctly by automated systems and reaches human recruiters.'
-    : 'Featuring bold section headers, clear visual hierarchy, and strategic accent colors, this template helps your resume stand out while maintaining a professional appearance that recruiters love.';
+  const heroDescription1 = 'Clean, modern design with a focus on readability and contemporary aesthetics. Perfect for tech professionals and creative roles.';
+  const heroDescription2 = 'Featuring bold section headers, clear visual hierarchy, and strategic accent colors, this template helps your resume stand out while maintaining a professional appearance that recruiters love.';
 
-  const faqs = isATS ? [
-    {
-      question: 'What is an ATS resume template?',
-      answer: 'An ATS resume template is specifically designed to pass through Applicant Tracking Systems. It uses clean, standard formatting with simple layouts and keyword-friendly structures that automated systems can easily parse.'
-    },
-    {
-      question: 'Why is ATS optimization important?',
-      answer: 'ATS optimization is crucial because many large companies, government agencies, and Fortune 500 organizations use automated screening systems. These systems scan thousands of resumes and filter out candidates based on keywords and formatting. An ATS-optimized template ensures your resume passes this initial screening.'
-    },
-    {
-      question: 'What formatting should I avoid in ATS resumes?',
-      answer: 'Avoid tables, columns, text boxes, graphics, and complex formatting. Stick to standard section headings like "Experience" and "Education". Use simple layouts without headers and footers for critical information. Use common fonts like Arial, Calibri, or Times New Roman.'
-    },
-    {
-      question: 'How long should an ATS resume be?',
-      answer: 'Keep it to 1-2 pages maximum. ATS systems prefer concise, well-organized content. Focus on relevant experience and keywords from the job description. Remove unnecessary elements that could confuse the parsing system.'
-    },
-    {
-      question: 'Should I include keywords for ATS?',
-      answer: 'Yes, include relevant keywords from the job description throughout your resume. Use standard industry terms and exact phrases from the posting. However, avoid keyword stuffing - use them naturally within your experience and skills sections.'
-    },
-    {
-      question: 'What file format is best for ATS?',
-      answer: 'Use standard file formats like PDF or Word (.docx). These formats maintain formatting while being easily readable by most ATS software. Avoid fancy formatting, and always proofread carefully to ensure proper parsing.'
-    },
-  ] : [
+  const faqs = [
     {
       question: 'What is a modern resume template?',
       answer: 'A modern resume template features clean lines, contemporary typography, and strategic use of accent colors. It emphasizes readability and visual hierarchy while maintaining a professional appearance that stands out to recruiters.'
@@ -277,6 +58,33 @@ export function TemplatePage() {
     },
   ];
 
+  const features = [
+    'Clean and minimal layout with modern typography',
+    'Emphasis on skills and achievements',
+    'Perfect for tech, design, and marketing roles',
+    'Contemporary visual design with accent colors',
+    'Customizable color schemes',
+    'Professional yet creative appearance',
+  ];
+
+  const useCases = [
+    'Software engineers and developers',
+    'Digital marketers and SEO specialists',
+    'UX/UI designers and product managers',
+    'Startup employees and tech entrepreneurs',
+    'Creative professionals and agencies',
+    'Remote workers and digital nomads',
+  ];
+
+  const tips = [
+    'Use a professional email address that includes your name',
+    'Quantify achievements with metrics and numbers whenever possible',
+    'Keep the resume to 1-2 pages maximum for optimal readability',
+    'Use action verbs to describe your accomplishments',
+    'Tailor your skills section to match the job requirements',
+    'Include relevant projects that demonstrate your capabilities',
+  ];
+
   return (
     <div style={{
       fontFamily: 'sans-serif',
@@ -287,15 +95,15 @@ export function TemplatePage() {
       <Navbar dropdowns={{
         templates: [
           { href: `/templates/modern`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Modern', description: 'Clean, modern design' },
-          { href: `/templates/minimal`, icon: <FileText style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Minimal', description: 'Simple, elegant layout' },
-          { href: `/templates/professional`, icon: <Briefcase style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Professional', description: 'Corporate, formal style' },
-          { href: `/templates/ats`, icon: <Target style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'ATS', description: 'Optimized for screening' },
-          { href: `/templates/creative`, icon: <Palette style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Creative', description: 'Bold, eye-catching look' },
-          { href: `/templates/premium`, icon: <Crown style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Premium', description: 'Most popular choice' },
+          { href: `/templates/minimal`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Minimal', description: 'Simple, elegant layout' },
+          { href: `/templates/professional`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Professional', description: 'Corporate, formal style' },
+          { href: `/templates/ats`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'ATS', description: 'Optimized for screening' },
+          { href: `/templates/creative`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Creative', description: 'Bold, eye-catching look' },
+          { href: `/templates/premium`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Premium', description: 'Most popular choice' },
         ],
         examples: [
           { href: '/examples', icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Entry Level', description: 'Recent graduates' },
-          { href: '/examples', icon: <Briefcase style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Mid Career', description: '5+ years experience' },
+          { href: '/examples', icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Mid Career', description: '5+ years experience' },
           { href: '/examples', icon: <Star style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Executive', description: 'Senior leadership' },
         ],
       }} />
@@ -315,7 +123,7 @@ export function TemplatePage() {
           margin: '0 auto',
         }}>
           {/* Left side - Text content */}
-            <div style={{ flex: 1, paddingRight: 20 }}>
+          <div style={{ flex: 1, paddingRight: 20 }}>
             <h1 style={{
               fontSize: 64,
               fontWeight: 800,
@@ -324,7 +132,7 @@ export function TemplatePage() {
               margin: '0 0 24px',
               color: '#0f172a',
             }}>
-              {title} Resume Template
+              Modern Resume Template
             </h1>
             
             <p style={{
@@ -475,6 +283,7 @@ export function TemplatePage() {
         }
       `}</style>
 
+
       {/* About Section */}
       <div style={{
         padding: '60px 96px 0',
@@ -488,7 +297,7 @@ export function TemplatePage() {
           {aboutSection.heading}
         </h2>
         {aboutSection.paragraphs.map((para, index) => (
-          <p style={{
+          <p key={index} style={{
             fontSize: 18,
             lineHeight: 1.8,
             color: '#334155',
@@ -519,11 +328,11 @@ export function TemplatePage() {
           {features.map((feature, index) => {
             const icons = [
               <Layout key="layout" style={{ width: 28, height: 28, color: '#0f172a' }} />,
-              <Target key="target" style={{ width: 28, height: 28, color: '#0f172a' }} />,
-              <Briefcase key="briefcase" style={{ width: 28, height: 28, color: '#0f172a' }} />,
-              <FileText key="filetext" style={{ width: 28, height: 28, color: '#0f172a' }} />,
-              <Palette key="palette" style={{ width: 28, height: 28, color: '#0f172a' }} />,
-              <Sparkles key="sparkles" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <Layout key="layout1" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <Layout key="layout2" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <Layout key="layout3" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <Layout key="layout4" style={{ width: 28, height: 28, color: '#0f172a' }} />,
+              <Layout key="layout5" style={{ width: 28, height: 28, color: '#0f172a' }} />,
             ];
             return (
               <div key={index} style={{

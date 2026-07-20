@@ -12,18 +12,20 @@ const templates: Record<TemplateId, React.FC<{ resume: ResumeData; custom: Custo
   professional: ProfessionalTemplate,
   ats: ATSTemplate,
   creative: CreativeTemplate,
+  premium: PremiumTemplate,
 };
 
 export function getTemplate(id: TemplateId) {
-  return templates[id] || PremiumTemplate;
+  return templates[id];
 }
 
 export const templateInfo: { id: TemplateId; name: string; description: string }[] = [
-  { id: 'modern', name: 'Premium', description: 'Minimal, elegant, ATS-friendly design' },
-  { id: 'minimal', name: 'Minimal', description: 'Same premium foundation' },
-  { id: 'professional', name: 'Professional', description: 'Same premium foundation' },
-  { id: 'ats', name: 'ATS', description: 'Same premium foundation' },
-  { id: 'creative', name: 'Creative', description: 'Same premium foundation' },
+  { id: 'modern', name: 'Modern', description: 'Clean, modern design' },
+  { id: 'minimal', name: 'Minimal', description: 'Simple, elegant layout' },
+  { id: 'professional', name: 'Professional', description: 'Corporate, formal style' },
+  { id: 'ats', name: 'ATS', description: 'Optimized for screening' },
+  { id: 'creative', name: 'Creative', description: 'Bold, eye-catching look' },
+  { id: 'premium', name: 'Premium', description: 'Most popular choice' },
 ];
 
 export { PremiumTemplate };

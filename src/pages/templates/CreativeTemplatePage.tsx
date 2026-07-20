@@ -1,0 +1,569 @@
+import { Navbar, Footer } from '@/components/home';
+import { CreativeTemplate } from '@/components/templates/CreativeTemplate';
+import { createPlaceholderResume } from '@/data/placeholderResume';
+import { Layout, Star } from 'lucide-react';
+import { useState } from 'react';
+
+export function CreativeTemplatePage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const sampleResumes = [
+    createPlaceholderResume(),
+    createPlaceholderResume(),
+    createPlaceholderResume(),
+    createPlaceholderResume()
+  ];
+  const sampleCustoms = [
+    { templateId: 'creative', primaryColor: '#7C3AED', accentColor: '#EC4899', fontFamily: 'Poppins', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
+    { templateId: 'creative', primaryColor: '#EC4899', accentColor: '#F59E0B', fontFamily: 'Poppins', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
+    { templateId: 'creative', primaryColor: '#10B981', accentColor: '#3B82F6', fontFamily: 'Poppins', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
+    { templateId: 'creative', primaryColor: '#F59E0B', accentColor: '#EF4444', fontFamily: 'Poppins', fontSize: 14, lineSpacing: 1.5, sectionSpacing: 28 } as const,
+  ];
+
+  const aboutSection = {
+    heading: 'About Creative Resume Templates',
+    paragraphs: [
+      'Creative resume templates are designed to make a bold, eye-catching impression for designers, artists, and creative professionals. These templates showcase your unique personality and style while maintaining professionalism.',
+      'The creative template features bold visual design, unique layouts, and distinctive typography that help you stand out from the crowd. It balances creativity with readability, ensuring your resume captures attention while effectively communicating your qualifications.',
+      'Creative templates are perfect for design, marketing, advertising, photography, and other creative industries where visual presentation matters. They allow you to demonstrate your design sensibility and attention to detail through the resume itself.'
+    ]
+  };
+
+  const heroDescription1 = 'Bold, eye-catching look for designers, artists, and creative professionals. Showcases your unique personality and style.';
+  const heroDescription2 = 'Featuring bold visual design and unique layout, this template helps you stand out while maintaining professionalism that recruiters appreciate.';
+
+  const faqs = [
+    {
+      question: 'What is a creative resume template?',
+      answer: 'A creative resume template features bold, distinctive visual design with unique layouts and typography. It is designed to showcase your personality and creativity while maintaining professionalism, perfect for creative industries.'
+    },
+    {
+      question: 'When should I use a creative resume template?',
+      answer: 'Use creative templates for design, marketing, advertising, photography, videography, and other creative industries. They are also appropriate for startups, agencies, and companies that value innovation and creative thinking.'
+    },
+    {
+      question: 'Are creative resumes ATS-friendly?',
+      answer: 'Some creative elements may not be ATS-friendly. If applying to large corporations with ATS systems, consider using a more traditional template. Creative templates work best when submitting directly to humans or for creative roles where design skills are valued.'
+    },
+    {
+      question: 'How can I make my creative resume stand out?',
+      answer: 'Use strategic color accents, unique but readable fonts, distinctive layouts, and visual hierarchy. Include links to your portfolio, use icons or graphics sparingly, and ensure the design reflects your personal brand while remaining professional.'
+    },
+    {
+      question: 'Should creative resumes include a photo?',
+      answer: 'For creative roles, a professional headshot or portfolio thumbnail can be appropriate, especially for client-facing positions. However, ensure the photo is high-quality and professionally taken, and consider cultural norms for the region.'
+    },
+    {
+      question: 'What colors work best for creative resumes?',
+      answer: 'Bold but harmonious color schemes work best. Consider using a vibrant accent color against a neutral background. Popular choices include purple, teal, coral, or mustard yellow. Ensure sufficient contrast for readability.'
+    },
+  ];
+
+  const features = [
+    'Bold and distinctive visual design',
+    'Perfect for creative industries',
+    'Shows personality and creativity',
+    'Unique layout that stands out',
+    'Great for designers and artists',
+    'Memorable presentation',
+  ];
+
+  const useCases = [
+    'Graphic designers and illustrators',
+    'Marketing and advertising professionals',
+    'Web designers and developers',
+    'Photographers and videographers',
+    'Creative directors and artists',
+  ];
+
+  const tips = [
+    'Showcase your portfolio alongside the resume',
+    'Use color strategically to highlight key sections',
+    'Include links to your online portfolio or Behance',
+    'Let your personality shine through the design',
+    'Balance creativity with readability',
+    'Use unique but professional fonts',
+  ];
+
+  return (
+    <div style={{
+      fontFamily: 'sans-serif',
+      background: '#F8F9FA',
+      color: '#111827',
+      minHeight: '100vh',
+    }}>
+      <Navbar dropdowns={{
+        templates: [
+          { href: `/templates/modern`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Modern', description: 'Clean, modern design' },
+          { href: `/templates/minimal`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Minimal', description: 'Simple, elegant layout' },
+          { href: `/templates/professional`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Professional', description: 'Corporate, formal style' },
+          { href: `/templates/ats`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'ATS', description: 'Optimized for screening' },
+          { href: `/templates/creative`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Creative', description: 'Bold, eye-catching look' },
+          { href: `/templates/premium`, icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Premium', description: 'Most popular choice' },
+        ],
+        examples: [
+          { href: '/examples', icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Entry Level', description: 'Recent graduates' },
+          { href: '/examples', icon: <Layout style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Mid Career', description: '5+ years experience' },
+          { href: '/examples', icon: <Star style={{ width: 40, height: 40, color: '#64748b', marginTop: 2 }} />, title: 'Executive', description: 'Senior leadership' },
+        ],
+      }} />
+      
+      {/* Hero Section */}
+      <div style={{
+        background: 'linear-gradient(135deg, #F3E8FF 0%, #FCE7F3 100%)',
+        padding: '80px 96px',
+        marginBottom: 0,
+        position: 'relative',
+      }}>
+        <div style={{
+          display: 'flex',
+          gap: 60,
+          alignItems: 'flex-start',
+          maxWidth: 1400,
+          margin: '0 auto',
+        }}>
+          <div style={{ flex: 1, paddingRight: 20 }}>
+            <h1 style={{
+              fontSize: 64,
+              fontWeight: 800,
+              letterSpacing: '-0.03em',
+              lineHeight: 1.2,
+              margin: '0 0 24px',
+              color: '#0f172a',
+            }}>
+              Creative Resume Template
+            </h1>
+            <p style={{
+              fontSize: 18,
+              lineHeight: 1.6,
+              color: '#475569',
+              margin: '0 0 32px',
+              maxWidth: 700,
+            }}>
+              {heroDescription1}
+            </p>
+            <p style={{
+              fontSize: 18,
+              lineHeight: 1.6,
+              color: '#475569',
+              margin: '0 0 40px',
+              maxWidth: 700,
+            }}>
+              {heroDescription2}
+            </p>
+
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 28,
+            }}>
+              <div style={{
+                display: 'flex',
+                gap: 12,
+              }}>
+                <a
+                  href="/builder"
+                  style={{
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '16px 32px',
+                    fontSize: 17,
+                    fontWeight: 600,
+                    color: '#fff',
+                    background: '#0f172a',
+                    borderRadius: 8,
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: 'sans-serif',
+                  }}
+                >
+                  Use This Template
+                </a>
+                <a
+                  href="/templates"
+                  style={{
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '16px 32px',
+                    fontSize: 17,
+                    fontWeight: 500,
+                    color: '#0f172a',
+                    background: '#fff',
+                    borderRadius: 8,
+                    border: '1.5px solid #0f172a',
+                    cursor: 'pointer',
+                    fontFamily: 'sans-serif',
+                  }}
+                >
+                  Back to Templates
+                </a>
+              </div>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 12,
+              }}>
+                <div style={{
+                  display: 'flex',
+                  gap: 4,
+                }}>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg key={star} width="24" height="24" viewBox="0 0 24 24">
+                      <use href="/icons.svg#star-icon" />
+                    </svg>
+                  ))}
+                </div>
+                <span style={{
+                  fontSize: 18,
+                  fontWeight: 600,
+                  color: '#0f172a',
+                }}>4.9</span>
+                <span style={{
+                  fontSize: 18,
+                  color: '#64748b',
+                }}>(2.3k reviews)</span>
+              </div>
+            </div>
+          </div>
+
+          <div style={{
+            flex: '0 0 300px',
+            borderRadius: 14,
+            boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
+            position: 'relative',
+          }}>
+            <img
+              src="/images/resume1.webp"
+              alt="Creative Resume Template"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
+            />
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
+              left: -12,
+              background: '#0f172a',
+              color: '#fff',
+              padding: '10px 16px',
+              borderTopRightRadius: 0,
+              borderBottomRightRadius: 12,
+              borderTopLeftRadius: 12,
+              borderBottomLeftRadius: 0,
+              fontSize: 14,
+              fontWeight: 700,
+              letterSpacing: '-0.02em',
+              animation: 'bounce 2s ease-in-out infinite',
+            }}>
+              creative
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes bounce {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .faq-answer {
+          transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        }
+      `}</style>
+
+      <div style={{ padding: '60px 96px 0' }}>
+        <h2 style={{
+          fontSize: 40,
+          fontWeight: 700,
+          margin: '0 0 32px',
+          color: '#0f172a',
+        }}>
+          About Creative Resume Templates
+        </h2>
+        {aboutSection.paragraphs.map((para, index) => (
+          <p key={index} style={{
+            fontSize: 18,
+            lineHeight: 1.8,
+            color: '#334155',
+            margin: index < 2 ? '0 0 20px' : '0 0 60px',
+          }}>
+            {para}
+          </p>
+        ))}
+      </div>
+
+      <div style={{ padding: '0 96px 60px' }}>
+        <h2 style={{
+          fontSize: 40,
+          fontWeight: 700,
+          margin: '0 0 32px',
+          color: '#0f172a',
+        }}>
+          Key Features
+        </h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 24,
+        }}>
+          {features.map((feature, index) => (
+            <div key={index} style={{
+              background: '#fff',
+              padding: 32,
+              borderRadius: 16,
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.04)',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: 20,
+            }}>
+              <div style={{
+                width: 56,
+                height: 56,
+                borderRadius: 14,
+                background: '#F3E8FF',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}>
+                <Layout style={{ width: 28, height: 28, color: '#7C3AED' }} />
+              </div>
+              <div>
+                <div style={{
+                  fontSize: 22,
+                  fontWeight: 700,
+                  color: '#0f172a',
+                  marginBottom: 16,
+                }}>{feature}</div>
+                <p style={{
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: '#475569',
+                  margin: 0,
+                }}>
+                  This feature helps you showcase your creativity while maintaining a professional appearance that stands out to employers.
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ padding: '0 96px 60px' }}>
+        <h2 style={{
+          fontSize: 40,
+          fontWeight: 700,
+          margin: '0 0 32px',
+          color: '#0f172a',
+        }}>
+          Sample Resumes
+        </h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: 30,
+        }}>
+          {sampleResumes.map((sampleResume, index) => (
+            <div key={index}>
+              <div style={{
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                background: '#fff',
+                overflow: 'hidden',
+                aspectRatio: '8.5/11',
+                position: 'relative',
+                height: 500,
+              }}>
+                <div style={{
+                  transform: 'scale(0.45)',
+                  transformOrigin: 'top left',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '222%',
+                  height: '222%',
+                }}>
+                  <CreativeTemplate resume={sampleResume} custom={sampleCustoms[index]} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ padding: '0 96px 60px' }}>
+        <h2 style={{
+          fontSize: 40,
+          fontWeight: 700,
+          margin: '0 0 32px',
+          color: '#0f172a',
+        }}>
+          Perfect For
+        </h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: 20,
+        }}>
+          {useCases.map((useCase, index) => (
+            <div key={index} style={{
+              background: '#fff',
+              padding: '24px 28px',
+              borderRadius: 14,
+              border: '1px solid #E2E8F0',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 16,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+            }}>
+              <span style={{
+                width: 44,
+                height: 44,
+                borderRadius: '50%',
+                background: '#F3E8FF',
+                color: '#7C3AED',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 20,
+                fontWeight: 700,
+                flexShrink: 0,
+              }}>{index + 1}</span>
+              <span style={{
+                fontSize: 18,
+                color: '#334155',
+                lineHeight: 1.6,
+                fontWeight: 500,
+              }}>{useCase}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ padding: '0 96px 80px' }}>
+        <h2 style={{
+          fontSize: 40,
+          fontWeight: 700,
+          margin: '0 0 32px',
+          color: '#0f172a',
+        }}>
+          Pro Tips
+        </h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 24,
+        }}>
+          {tips.map((tip, index) => (
+            <div key={index} style={{
+              background: '#fff',
+              padding: 32,
+              borderRadius: 16,
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.04)',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: 16,
+            }}>
+              <span style={{
+                width: 32,
+                height: 32,
+                borderRadius: '50%',
+                background: '#7C3AED',
+                color: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 16,
+                fontWeight: 700,
+                flexShrink: 0,
+              }}>{index + 1}</span>
+              <span style={{
+                fontSize: 16,
+                lineHeight: 1.6,
+                color: '#475569',
+              }}>{tip}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ padding: '0 96px 60px' }}>
+        <h2 style={{
+          fontSize: 40,
+          fontWeight: 700,
+          margin: '0 0 32px',
+          color: '#0f172a',
+        }}>
+          Frequently Asked Questions
+        </h2>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+        }}>
+          {faqs.map((faq, index) => (
+            <div key={index} style={{
+              background: '#fff',
+              borderRadius: 16,
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+              overflow: 'hidden',
+            }}>
+              <div
+                onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                style={{
+                  padding: '24px 28px',
+                  fontSize: 18,
+                  fontWeight: 600,
+                  color: '#0f172a',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  userSelect: 'none',
+                }}
+              >
+                <span>{faq.question}</span>
+                <span style={{
+                  color: '#64748b',
+                  fontSize: 24,
+                  lineHeight: 1,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 24,
+                  height: 24,
+                  transition: 'transform 0.3s ease',
+                  transform: openFaq === index ? 'rotate(45deg)' : 'rotate(0deg)',
+                }}>+</span>
+              </div>
+              <div className="faq-answer" style={{
+                maxHeight: openFaq === index ? '200px' : '0',
+                overflow: 'hidden',
+                opacity: openFaq === index ? 1 : 0,
+              }}>
+                <p style={{
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: '#475569',
+                  margin: '0 24px 24px 24px',
+                }}>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}

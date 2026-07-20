@@ -120,7 +120,8 @@ export type TemplateId =
   | 'minimal'
   | 'professional'
   | 'ats'
-  | 'creative';
+  | 'creative'
+  | 'premium';
 
 export interface Customization {
   templateId: TemplateId;

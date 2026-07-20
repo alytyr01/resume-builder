@@ -9,7 +9,7 @@ const customizations: Customization[] = [
   { templateId: 'professional', primaryColor: '#1E40AF', accentColor: '#1E40AF', fontFamily: 'Georgia', fontSize: 15, lineSpacing: 1.7, sectionSpacing: 40 },
   { templateId: 'ats', primaryColor: '#6D28D9', accentColor: '#6D28D9', fontFamily: 'Arial', fontSize: 14, lineSpacing: 1.6, sectionSpacing: 32 },
   { templateId: 'creative', primaryColor: '#DC2626', accentColor: '#DC2626', fontFamily: 'Inter', fontSize: 15, lineSpacing: 1.65, sectionSpacing: 36 },
-];eo makt 
+];
 
 interface CardData {
   resume: ResumeData;
