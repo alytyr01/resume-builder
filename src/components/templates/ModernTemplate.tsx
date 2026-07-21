@@ -13,7 +13,7 @@ export function ModernTemplate({ resume, custom }: Props) {
   return (
     <div style={{ fontFamily: custom.fontFamily || 'Inter', fontSize: custom.fontSize, lineHeight: custom.lineSpacing, color: '#1e293b' }}>
       {/* Header */}
-      <div style={{ background: pColor, color: '#fff', padding: '32px 36px', marginBottom: custom.sectionSpacing }}>
+      <div style={{ background: pColor, color: '#fff', padding: '32px 36px' }}>
         <h1 style={{ fontSize: 28, fontWeight: 700, margin: 0, letterSpacing: '-0.5px' }}>{personal.fullName || 'Your Name'}</h1>
         <p style={{ fontSize: 16, margin: '4px 0 0', opacity: 0.9 }}>{personal.jobTitle || 'Job Title'}</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 12, fontSize: 12, opacity: 0.85 }}>
@@ -26,7 +26,7 @@ export function ModernTemplate({ resume, custom }: Props) {
         </div>
       </div>
 
-      <div style={{ padding: '0 36px 36px' }}>
+      <div style={{ padding: `${custom.sectionSpacing}px 36px 36px` }}>
         {/* Summary */}
         {visibleSections.find((s) => s.id === 'summary') && summary && (
           <div style={{ marginBottom: custom.sectionSpacing }}>

@@ -9,54 +9,40 @@ export async function printResume() {
   }
 
   try {
-    // Store original styles
-    const originalStyles = {
-      transform: element.style.transform,
-      transformOrigin: element.style.transformOrigin,
-      width: element.style.width,
-      position: element.style.position,
-      left: element.style.left,
-      top: element.style.top,
-      padding: element.style.padding,
-      margin: element.style.margin,
-      display: element.style.display,
-      visibility: element.style.visibility,
-      minHeight: element.style.minHeight,
-      height: element.style.height,
-      overflow: element.style.overflow,
-    };
+    // Clone the resume element and normalize styles for capture
+    const clone = element.cloneNode(true) as HTMLElement;
+    clone.style.transform = 'none';
+    clone.style.transformOrigin = 'unset';
+    clone.style.width = '210mm';
+    clone.style.position = 'static';
+    clone.style.left = 'auto';
+    clone.style.top = 'auto';
+    clone.style.padding = '0';
+    clone.style.margin = '0 auto';
+    clone.style.display = 'block';
+    clone.style.visibility = 'visible';
+    clone.style.minHeight = '297mm';
+    clone.style.height = 'auto';
+    clone.style.overflow = 'visible';
 
-    // Temporarily normalize for printing: full width, no transforms
-    element.style.transform = 'none';
-    element.style.transformOrigin = 'unset';
-    element.style.width = '210mm';
-    element.style.position = 'static';
-    element.style.left = 'auto';
-    element.style.top = 'auto';
-    element.style.padding = '0';
-    element.style.margin = '0 auto';
-    element.style.display = 'block';
-    element.style.visibility = 'visible';
-    element.style.minHeight = '297mm';
-    element.style.height = 'auto';
-    element.style.overflow = 'visible';
+    // Position off-screen for capture
+    clone.style.position = 'absolute';
+    clone.style.left = '-9999px';
+    clone.style.top = '0';
+    document.body.appendChild(clone);
 
-    // Wait for layout to settle
-    await new Promise(r => setTimeout(r, 100));
-
-    const targetWidth = 210 * 3.78; // ~794px at 96 DPI
-
-    const canvas = await html2canvas(element, {
+    const targetWidth = 210 * 3.78; // ~794px
+    const canvas = await html2canvas(clone, {
       scale: 2,
       useCORS: true,
       backgroundColor: '#ffffff',
       width: targetWidth,
       windowWidth: targetWidth,
-      // Don't constrain height - let it capture full content
+      height: clone.scrollHeight,
+      windowHeight: clone.scrollHeight,
     });
 
-    // Restore original styles
-    Object.assign(element.style, originalStyles);
+    document.body.removeChild(clone);
 
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF('p', 'mm', 'a4');
