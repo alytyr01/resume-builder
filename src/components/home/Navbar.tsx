@@ -134,6 +134,24 @@ export function Navbar({ dropdowns }: NavbarProps) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <a href="/builder" onClick={(e) => { e.preventDefault(); delayNavigation('/builder'); }} style={{ textDecoration: 'none' }}>
             <Button
+              style={{
+                fontSize: 20,
+                padding: '10px 24px',
+                height: 44,
+                borderRadius: 8,
+                fontWeight: 600,
+                lineHeight: 1,
+                fontFamily: 'sans-serif',
+                background: '#0f172a',
+                border: 'none',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
+              }}
+            >
+              Get Started
+            </Button>
+          </a>
+          <a href="/builder" onClick={(e) => { e.preventDefault(); delayNavigation('/builder'); }} style={{ textDecoration: 'none', opacity: 0.5, pointerEvents: 'none' }}>
+            <Button
               variant="outline"
               onMouseEnter={() => {}}
               onMouseLeave={() => {}}
@@ -151,24 +169,6 @@ export function Navbar({ dropdowns }: NavbarProps) {
               }}
             >
               Sign In
-            </Button>
-          </a>
-          <a href="/builder" onClick={(e) => { e.preventDefault(); delayNavigation('/builder'); }} style={{ textDecoration: 'none' }}>
-            <Button
-              style={{
-                fontSize: 20,
-                padding: '10px 24px',
-                height: 44,
-                borderRadius: 8,
-                fontWeight: 600,
-                lineHeight: 1,
-                fontFamily: 'sans-serif',
-                background: '#0f172a',
-                border: 'none',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
-              }}
-            >
-              Get Started
             </Button>
           </a>
         </div>
