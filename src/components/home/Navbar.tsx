@@ -49,8 +49,8 @@ export function Navbar({ dropdowns }: NavbarProps) {
               onMouseEnter={() => document.getElementById('templates-dropdown')?.style && (document.getElementById('templates-dropdown')!.style.display = 'block')}
               onMouseLeave={() => document.getElementById('templates-dropdown')?.style && (document.getElementById('templates-dropdown')!.style.display = 'none')}
             >
-              <a href="/templates" style={{ textDecoration: 'none', fontSize: 22, fontWeight: 600, color: '#475569', display: 'flex', alignItems: 'center', gap: 4, letterSpacing: '-0.01em' }}>
-                Resume Templates <ChevronDown style={{ width: 20, height: 20 }} />
+              <a href="/templates" style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>
+                Resume Templates <ChevronDown style={{ width: 18, height: 18 }} />
               </a>
               <div
                 id="templates-dropdown"

@@ -3,7 +3,7 @@ import { useUIStore } from '@/store/uiStore';
 import { SectionPanel } from '@/components/builder/SectionPanel';
 import { ResumePreview } from '@/components/preview/ResumePreview';
 import { SettingsPanel } from '@/components/settings/SettingsPanel';
-import { FileText, Edit3, Settings, Maximize2, Minimize2, ArrowLeft } from 'lucide-react';
+import { FileText, Edit3, Settings, Maximize2, Minimize2 } from 'lucide-react';
 
 export function BuilderPage() {
   const isFullscreen = useUIStore((s) => s.isPreviewFullscreen);
@@ -52,16 +52,14 @@ export function BuilderPage() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
-              fontSize: 17,
-              fontWeight: 700,
-              color: '#0f172a',
               textDecoration: 'none',
             }}
           >
-            <ArrowLeft size={18} color="#64748b" />
-            <FileText size={18} color="#64748b" />
-            <span>Resume Builder</span>
+            <img
+              src="/images/logo.png"
+              alt="CVora"
+              style={{ width: 40, height: 40, borderRadius: 10, objectFit: 'contain' }}
+            />
           </a>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
