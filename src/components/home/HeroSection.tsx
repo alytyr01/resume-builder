@@ -25,6 +25,62 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
         marginLeft: 'auto',
         flexDirection: 'column',
       }}>
+        <style>{`
+          @media (min-width: 768px) {
+            .hero-layout {
+              flex-direction: row !important;
+              gap: 40px;
+            }
+            .hero-text-col {
+              flex: 0 1 50% !important;
+              max-width: 50% !important;
+            }
+            .hero-cards-col {
+              flex: 1 !important;
+              marginTop: 0 !important;
+            }
+          }
+          @media (max-width: 767px) {
+            .hero-layout {
+              flex-direction: column !important;
+            }
+            .hero-cards-col {
+              marginTop: 32px !important;
+              width: 100% !important;
+            }
+            .hero-cards-container {
+              width: 100% !important;
+              height: auto !important;
+              min-height: 0 !important;
+            }
+            .hero-card-main,
+            .hero-card-secondary {
+              transform: scale(0.8) !important;
+              transform-origin: top center !important;
+            }
+            .hero-card-secondary {
+              top: 100px !important;
+            }
+            .hero-badge-free {
+              left: 0 !important;
+              bottom: 10px !important;
+              font-size: 12px !important;
+              padding: 6px 12px !important;
+            }
+            .hero-badge-template {
+              right: 0 !important;
+              bottom: -30px !important;
+              font-size: 12px !important;
+              padding: 6px 12px !important;
+            }
+            .hero-badge-accepted {
+              top: -60px !important;
+              right: 0 !important;
+              font-size: 14px !important;
+              padding: 6px 12px !important;
+            }
+          }
+        `}</style>
         {/* Left Column - Text */}
         <div className="hero-text-col" style={{
           flex: '0 1 100%',
@@ -32,6 +88,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
           marginLeft: 0,
           paddingLeft: 0,
           paddingRight: 0,
+          width: '100%',
         }}>
           <h1 className="hero-title" style={{
             fontSize: 'clamp(32px, 7vw, 64px)',
@@ -211,7 +268,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
           marginTop: 32,
           width: '100%',
         }}>
-          <div style={{
+          <div className="hero-cards-container" style={{
             position: 'relative',
             width: 'min(520px, 100%)',
             height: 'min(620px, 80vw)',
