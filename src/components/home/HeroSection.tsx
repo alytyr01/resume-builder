@@ -15,12 +15,12 @@ interface HeroSectionProps {
   startHover: boolean;
 }
 
-export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
+export function HeroSection({ onStartHover, startHover, isVisible }: HeroSectionProps & { isVisible?: boolean }) {
   return (
     <div style={{
       padding: '120px 96px 0',
       minHeight: 'calc(100vh - 73px)',
-    }}>
+    }} className={isVisible ? 'hero-animate' : ''}>
       <div style={{
         display: 'flex',
         alignItems: 'flex-start',

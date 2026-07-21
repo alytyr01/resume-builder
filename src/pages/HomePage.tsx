@@ -39,6 +39,66 @@ export function HomePage() {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-6px); }
       }
+      @keyframes heroFadeIn {
+        from { 
+          opacity: 0; 
+          transform: translateY(30px); 
+        }
+        to { 
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+      }
+      @keyframes heroFadeInDelay {
+        from { 
+          opacity: 0; 
+          transform: translateY(20px); 
+        }
+        to { 
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+      }
+      @keyframes slideInFromLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideInFromRight {
+        from {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      .hero-animate {
+        animation: heroFadeIn 0.8s ease-out forwards;
+        opacity: 0;
+      }
+      .hero-animate-delay {
+        animation: heroFadeInDelay 0.8s ease-out 0.3s forwards;
+        opacity: 0;
+      }
+      .hero-animate-delay-2 {
+        animation: heroFadeInDelay 0.8s ease-out 0.5s forwards;
+        opacity: 0;
+      }
+      .hero-slide-left {
+        animation: slideInFromLeft 1s ease-out forwards;
+        opacity: 0;
+      }
+      .hero-slide-right {
+        animation: slideInFromRight 1s ease-out forwards;
+        opacity: 0;
+      }
     `;
     document.head.appendChild(style);
     return () => {
@@ -88,7 +148,9 @@ export function HomePage() {
       paddingTop: 100,
     }}>
       <Navbar dropdowns={dropdowns} />
-      <HeroSection onStartHover={setStartHover} startHover={startHover} />
+      <div className={isVisible ? "hero-animate" : ""}>
+        <HeroSection onStartHover={setStartHover} startHover={startHover} />
+      </div>
 
       {/* Create a resume section - left aligned to logo edge, right aligned to Get Started button */}
       <div style={{ ...sectionStyle, background: '#fff' }}>
