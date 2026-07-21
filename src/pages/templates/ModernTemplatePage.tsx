@@ -1,7 +1,7 @@
 import { Navbar, Footer } from '@/components/home';
 import { ModernTemplate } from '@/components/templates/ModernTemplate';
 import { createPlaceholderResume } from '@/data/placeholderResume';
-import { Layout, Star, Sparkles, Palette, Briefcase, FileText, Crown, User, TrendingUp, Award } from 'lucide-react';
+import { Layout, Sparkles, Palette, Briefcase, FileText, Crown, User, TrendingUp, Award } from 'lucide-react';
 import { useState } from 'react';
 
 export function ModernTemplatePage() {
@@ -27,9 +27,6 @@ export function ModernTemplatePage() {
       'Modern templates are particularly effective for roles in technology, design, marketing, and other creative industries where a contemporary aesthetic is valued. They also work well for traditional roles, as the clean design conveys professionalism while the modern touches help your application stand out from more conventional resumes.'
     ]
   };
-
-  const heroDescription1 = 'Clean, modern design with a focus on readability and contemporary aesthetics. Perfect for tech professionals and creative roles.';
-  const heroDescription2 = 'Featuring bold section headers, clear visual hierarchy, and strategic accent colors, this template helps your resume stand out while maintaining a professional appearance that recruiters love.';
 
   const faqs = [
     {

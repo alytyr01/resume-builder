@@ -1,7 +1,7 @@
 import { Navbar, Footer } from '@/components/home';
 import { ModernTemplate } from '@/components/templates/ModernTemplate';
 import { createPlaceholderResume } from '@/data/placeholderResume';
-import { Layout, FileText, Briefcase, Target, Palette, Crown, Star, Zap, Sparkles } from 'lucide-react';
+import { Layout, FileText, Briefcase, Target, Palette, Crown, Star, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -10,15 +10,6 @@ const delayNavigation = (navigate: ReturnType<typeof useNavigate>, href: string)
     navigate(href);
   }, 300);
 };
-
-interface TemplatePageProps {
-  title: string;
-  description: string;
-  features: string[];
-  useCases: string[];
-  tips: string[];
-  image: string;
-}
 
 const templateData: Record<string, { title: string; description: string; features: string[]; useCases: string[]; tips: string[]; image: string }> = {
   modern: {
@@ -196,7 +187,7 @@ export function TemplatePage() {
   const { templateId } = useParams<{ templateId: string }>();
   const navigate = useNavigate();
   const template = templateData[templateId || 'modern'] || templateData['modern'];
-  const { title, description, features, useCases, tips, image } = template;
+  const { title, features, useCases, tips } = template;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const sampleResumes = [createPlaceholderResume(), createPlaceholderResume(), createPlaceholderResume(), createPlaceholderResume()];
   const sampleCustoms = [

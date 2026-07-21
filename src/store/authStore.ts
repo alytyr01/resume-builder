@@ -24,7 +24,7 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       user: null,
       isAuthenticated: false,
       error: null,
@@ -65,9 +65,6 @@ export const useAuthStore = create<AuthState>()(
           // Simulated delay for API call
           await new Promise(resolve => setTimeout(resolve, 1000));
 
-          // Mock authentication - In production, this would be handled by the server
-          // NEVER expose actual user data in client-side code
-          // This is just a placeholder for demonstration
           const mockResponse = await mockAuthAPI(email, password);
 
           if (mockResponse.success && mockResponse.user) {
@@ -135,17 +132,13 @@ export const useAuthStore = create<AuthState>()(
   )
 );
 
-// Mock authentication API - REPLACE WITH REAL API IN PRODUCTION
-// This should NEVER expose sensitive user data
+
 async function mockAuthAPI(email: string, password: string): Promise<{
   success: boolean;
   user?: { id: string; email: string };
   error?: string;
 }> {
-  // This is a mock implementation for demonstration only
-  // In production, this would be a real API endpoint
-  
-  // Simulate credential check
+
   if (email === 'demo@example.com' && password === 'Demo1234') {
     return {
       success: true,
@@ -156,8 +149,7 @@ async function mockAuthAPI(email: string, password: string): Promise<{
     };
   }
   
-  // For demo purposes, accept any valid credentials
-  // In production, this would return false for invalid credentials
+  
   if (password.length >= 8 && !password.includes(' ')) {
     return {
       success: true,

@@ -1,7 +1,7 @@
 import { Navbar, Footer } from '@/components/home';
 import { CreativeTemplate } from '@/components/templates/CreativeTemplate';
 import { createPlaceholderResume } from '@/data/placeholderResume';
-import { Layout, Star, Sparkles, Palette, Briefcase, FileText, Crown, User, TrendingUp, Award } from 'lucide-react';
+import { Layout, Sparkles, Palette, Briefcase, FileText, Crown, User, TrendingUp, Award } from 'lucide-react';
 import { useState } from 'react';
 
 export function CreativeTemplatePage() {
