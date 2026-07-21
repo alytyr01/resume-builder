@@ -15,7 +15,10 @@ export function BuilderPage() {
   const setActiveMobileView = useUIStore((s) => s.setActiveMobileView);
   const updateCustomization = useResumeStore((s) => s.updateCustomization);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-  const [previewScale, setPreviewScale] = useState(0.6);
+  const [previewScale, setPreviewScale] = useState(() => {
+    const initialWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    return initialWidth < 640 ? 0.35 : 0.6;
+  });
   const [searchParams] = useSearchParams();
 
   const isMobile = windowWidth < 640;
@@ -44,7 +47,7 @@ export function BuilderPage() {
     const handleWheel = (e: WheelEvent) => {
       if (e.ctrlKey) {
         e.preventDefault();
-        setPreviewScale(s => Math.min(Math.max(s + (e.deltaY > 0 ? -0.1 : 0.1), 0.4), 1.4));
+        setPreviewScale(s => Math.min(Math.max(s + (e.deltaY > 0 ? -0.1 : 0.1), 0.35), 1.4));
       }
     };
     container.addEventListener('wheel', handleWheel, { passive: false });
@@ -84,7 +87,7 @@ export function BuilderPage() {
         const currentDistance = getDistance(e.touches);
         if (lastDistance > 0) {
           const scaleFactor = currentDistance / Math.max(lastDistance, 1);
-          const newScale = Math.min(Math.max(lastScale * scaleFactor, 0.4), 1.4);
+          const newScale = Math.min(Math.max(lastScale * scaleFactor, 0.35), 1.4);
           setPreviewScale(newScale);
           lastScale = newScale;
         }
@@ -269,9 +272,7 @@ export function BuilderPage() {
               <div style={{
                 transform: `scale(${previewScale})`,
                 transformOrigin: 'top center',
-              }}
-              className="sm:scale-[0.7] lg:scale-[0.8]"
-              >
+              }}>
                 <ResumePreview />
               </div>
             </div>
