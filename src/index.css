@@ -243,6 +243,8 @@ body {
   .navbar-navlinks { display: none !important; }
   .navbar-cta-btn { font-size: 13px !important; padding: 6px 12px !important; height: 32px !important; }
   .navbar-cta-btn-signin { display: none !important; }
+  .navbar-desktop-actions { display: none !important; }
+  .navbar-hamburger { display: flex !important; }
   .navbar-logo { width: 40px !important; height: 40px !important; border-radius: 10px !important; }
   .navbar-divider { display: none !important; }
 }
@@ -251,11 +253,14 @@ body {
 }
 @media (min-width: 768px) {
   .navbar-inner { padding: 16px 32px !important; }
+  .navbar-hamburger { display: flex !important; }
 }
 @media (min-width: 1024px) {
   .navbar-inner { padding: 20px 96px !important; }
   .navbar-navlinks { display: flex !important; }
   .navbar-cta-btn-signin { display: block !important; }
+  .navbar-desktop-actions { display: flex !important; }
+  .navbar-hamburger { display: none !important; }
   .navbar-logo { width: 64px !important; height: 64px !important; border-radius: 16px !important; }
   .navbar-divider { display: block !important; }
   .navbar-cta-btn { font-size: clamp(13px, 1.5vw, 20px) !important; padding: 8px 14px !important; height: clamp(32px, 4vw, 44px) !important; }
