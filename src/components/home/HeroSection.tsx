@@ -15,18 +15,28 @@ interface HeroSectionProps {
 
 export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
   const [cardScale, setCardScale] = useState(1);
+  const [containerWidth, setContainerWidth] = useState('520px');
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 375) {
-        setCardScale(0.85);
+        setCardScale(1.7);
+        setContainerWidth('640px');
+        setIsMobile(true);
       } else if (width < 640) {
-        setCardScale(0.9);
+        setCardScale(1.5);
+        setContainerWidth('600px');
+        setIsMobile(true);
       } else if (width < 768) {
         setCardScale(0.95);
+        setContainerWidth('520px');
+        setIsMobile(true);
       } else {
         setCardScale(1);
+        setContainerWidth('520px');
+        setIsMobile(false);
       }
     };
 
@@ -55,6 +65,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
           paddingLeft: 0,
           paddingRight: 0,
           width: '100%',
+          textAlign: isMobile ? 'center' : 'left',
         }}>
           <h1 className="hero-title" style={{
             fontSize: 'clamp(32px, 7vw, 64px)',
@@ -64,6 +75,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
             margin: '0 0 12px',
             color: '#0f172a',
             maxWidth: 'min(760px, 100%)',
+            textAlign: isMobile ? 'center' : 'left',
           }}>
             Build a resume that gets{' '}
             <span style={{
@@ -78,6 +90,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
             color: '#64748B',
             maxWidth: 'min(760px, 100%)',
             margin: '0 0 12px',
+            textAlign: isMobile ? 'center' : 'left',
           }}>
             Struggling with messy, inconsistent resumes and time-consuming manual formatting?
           </p>
@@ -87,6 +100,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
             color: '#64748B',
             maxWidth: 'min(760px, 100%)',
             margin: '0 0 16px',
+            textAlign: isMobile ? 'center' : 'left',
           }}>
             ResumeForge helps you rapidly create polished, professional resumes that impress recruiters and win more interviews.
           </p>
@@ -97,6 +111,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
             gap: 'clamp(8px, 1.5vw, 12px)',
             marginBottom: 16,
             flexWrap: 'wrap',
+            justifyContent: isMobile ? 'center' : 'flex-start',
           }}>
             <a
               href="/builder"
@@ -237,16 +252,16 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
           <div style={{
             position: 'relative',
             width: '100%',
-            maxWidth: '520px',
+            maxWidth: containerWidth,
             height: 'auto',
             minHeight: `${600 * cardScale}px`,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: `${32 * cardScale}px`,
+            gap: `${24 * cardScale}px`,
             transform: `scale(${cardScale})`,
             transformOrigin: 'top center',
-            marginBottom: `${-((600 - 200) * (1 - cardScale))}px`,
+            marginBottom: `${-((600 - 150) * (1 - cardScale))}px`,
           }}>
             {/* First Card */}
             <div style={{
@@ -257,20 +272,20 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
               <ResumeCard templateId="modern" width={400 * cardScale} height={560 * cardScale} />
               <div style={{
                 position: 'absolute',
-                bottom: -16,
+                bottom: `-${12 * cardScale}px`,
                 left: 0,
                 background: 'rgba(255,255,255,0.95)',
                 backdropFilter: 'blur(8px)',
                 color: '#0f172a',
-                padding: '8px 16px',
+                padding: `${6 * cardScale}px ${12 * cardScale}px`,
                 borderRadius: '0px 8px 0px 8px',
-                fontSize: 14,
+                fontSize: `${12 * cardScale + 2}px`,
                 fontWeight: 700,
                 zIndex: 10,
                 boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                 letterSpacing: '-0.01em',
-                borderTop: '2px solid #94A3B8',
-                borderRight: '2px solid #94A3B8',
+                borderTop: `${1.5 * cardScale}px solid #94A3B8`,
+                borderRight: `${1.5 * cardScale}px solid #94A3B8`,
               }}>
                 Free
               </div>
@@ -279,38 +294,38 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
             {/* Second Card */}
             <div style={{
               position: 'absolute',
-              right: `${20 * cardScale}px`,
-              top: `${140 * cardScale}px`,
+              right: `${10 * cardScale}px`,
+              top: `${110 * cardScale}px`,
             }}>
               <ResumeCard templateId="professional" width={280 * cardScale} height={392 * cardScale} />
               <div style={{
                 position: 'absolute',
-                bottom: -40,
-                right: 12,
+                bottom: `-${28 * cardScale}px`,
+                right: `${8 * cardScale}px`,
                 background: 'rgba(255,255,255,0.95)',
                 backdropFilter: 'blur(8px)',
                 color: '#0f172a',
-                padding: '8px 16px',
-                borderRadius: '8px 0px 8px 0px',
-                fontSize: 14,
+                padding: `${6 * cardScale}px ${12 * cardScale}px`,
+                borderRadius: `${6 * cardScale}px 0px ${6 * cardScale}px 0px`,
+                fontSize: `${12 * cardScale + 2}px`,
                 fontWeight: 700,
                 zIndex: 10,
                 boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                 letterSpacing: '-0.01em',
-                borderTop: '2px solid #94A3B8',
-                borderLeft: '2px solid #94A3B8',
+                borderTop: `${1.5 * cardScale}px solid #94A3B8`,
+                borderLeft: `${1.5 * cardScale}px solid #94A3B8`,
               }}>
                 Template
               </div>
               <div style={{
                 position: 'absolute',
-                top: -60,
+                top: `-${45 * cardScale}px`,
                 right: 0,
                 background: '#334155',
                 color: '#fff',
-                padding: '8px 16px',
-                borderRadius: '8px 8px 0px 8px',
-                fontSize: 15,
+                padding: `${6 * cardScale}px ${12 * cardScale}px`,
+                borderRadius: `${6 * cardScale}px ${6 * cardScale}px 0px ${6 * cardScale}px`,
+                fontSize: `${12 * cardScale + 3}px`,
                 fontWeight: 700,
                 animation: 'fadeSlideIn 0.5s ease-out, bounce 2s ease-in-out infinite',
                 zIndex: 10,
@@ -320,7 +335,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
                 gap: 8,
                 letterSpacing: '-0.01em',
               }}>
-                <Star style={{ width: 16, height: 16 }} />
+                <Star style={{ width: `${14 * cardScale}px`, height: `${14 * cardScale}px` }} />
                 Accepted
               </div>
             </div>
