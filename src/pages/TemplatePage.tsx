@@ -3,7 +3,13 @@ import { ModernTemplate } from '@/components/templates/ModernTemplate';
 import { createPlaceholderResume } from '@/data/placeholderResume';
 import { Layout, FileText, Briefcase, Target, Palette, Crown, Star, Zap, Sparkles } from 'lucide-react';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+
+const delayNavigation = (navigate: ReturnType<typeof useNavigate>, href: string) => {
+  setTimeout(() => {
+    navigate(href);
+  }, 300);
+};
 
 interface TemplatePageProps {
   title: string;
@@ -188,6 +194,7 @@ const templateData: Record<string, { title: string; description: string; feature
 
 export function TemplatePage() {
   const { templateId } = useParams<{ templateId: string }>();
+  const navigate = useNavigate();
   const template = templateData[templateId || 'modern'] || templateData['modern'];
   const { title, description, features, useCases, tips, image } = template;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -283,6 +290,7 @@ export function TemplatePage() {
       background: '#F8F9FA',
       color: '#111827',
       minHeight: '100vh',
+      paddingTop: 100,
     }}>
       <Navbar dropdowns={{
         templates: [
@@ -355,6 +363,7 @@ export function TemplatePage() {
               }}>
                 <a
                   href="/builder"
+                  onClick={(e) => { e.preventDefault(); delayNavigation(navigate, '/builder'); }}
                   style={{
                     textDecoration: 'none',
                     display: 'inline-flex',
@@ -374,6 +383,7 @@ export function TemplatePage() {
                 </a>
                 <a
                   href="/templates"
+                  onClick={(e) => { e.preventDefault(); delayNavigation(navigate, '/templates'); }}
                   style={{
                     textDecoration: 'none',
                     display: 'inline-flex',

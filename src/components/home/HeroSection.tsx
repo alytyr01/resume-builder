@@ -4,6 +4,12 @@ import { Button } from '@/components/ui';
 import { ChevronDown, FileText, Star, BarChart3, Sparkles, Shield, Download, Eye } from 'lucide-react';
 import { ResumeCard } from './ResumeCard';
 
+const delayNavigation = (href: string) => {
+  setTimeout(() => {
+    window.location.href = href;
+  }, 300);
+};
+
 interface HeroSectionProps {
   onStartHover: (hover: boolean) => void;
   startHover: boolean;
@@ -68,6 +74,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
           <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
             <a
               href="/builder"
+              onClick={(e) => { e.preventDefault(); delayNavigation('/builder'); }}
               style={{
                 textDecoration: 'none',
                 display: 'inline-flex',
@@ -91,6 +98,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
             </a>
             <a
               href="/builder"
+              onClick={(e) => { e.preventDefault(); delayNavigation('/builder'); }}
               style={{
                 textDecoration: 'none',
                 display: 'inline-flex',

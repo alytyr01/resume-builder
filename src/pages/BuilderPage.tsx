@@ -47,6 +47,7 @@ export function BuilderPage() {
       background: '#F8F9FA',
       color: '#111827',
       fontFamily: 'sans-serif',
+      paddingTop: 100,
     }}>
       {/* Top bar */}
       <header style={{

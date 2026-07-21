@@ -62,6 +62,7 @@ export function EntryLevelPage() {
       background: '#F8F9FA',
       color: '#111827',
       minHeight: '100vh',
+      paddingTop: 100,
     }}>
       <Navbar dropdowns={{
         templates: [

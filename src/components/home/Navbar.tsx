@@ -15,6 +15,12 @@ interface NavbarProps {
   };
 }
 
+const delayNavigation = (href: string) => {
+  setTimeout(() => {
+    window.location.href = href;
+  }, 300);
+};
+
 export function Navbar({ dropdowns }: NavbarProps) {
   return (
     <nav style={{
@@ -35,7 +41,7 @@ export function Navbar({ dropdowns }: NavbarProps) {
         alignItems: 'center',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 48 }}>
-          <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <a href="/" onClick={(e) => { e.preventDefault(); delayNavigation('/'); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
             <img
               src="/images/logo.png"
               alt="CVora"
@@ -49,7 +55,7 @@ export function Navbar({ dropdowns }: NavbarProps) {
               onMouseEnter={() => document.getElementById('templates-dropdown')?.style && (document.getElementById('templates-dropdown')!.style.display = 'block')}
               onMouseLeave={() => document.getElementById('templates-dropdown')?.style && (document.getElementById('templates-dropdown')!.style.display = 'none')}
             >
-              <a href="/templates" style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <a href="/templates" onClick={(e) => { e.preventDefault(); delayNavigation('/templates'); }} style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>
                 Resume Templates <ChevronDown style={{ width: 18, height: 18 }} />
               </a>
               <div
@@ -72,7 +78,7 @@ export function Navbar({ dropdowns }: NavbarProps) {
               >
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6 }}>
                   {dropdowns.templates.map((item) => (
-                    <a key={item.title} href={item.href} style={{ textDecoration: 'none', color: '#0f172a', padding: '14px 10px', fontSize: 24, fontWeight: 700, display: 'flex', alignItems: 'flex-start', gap: 16, textAlign: 'left' }}>
+                    <a key={item.title} href={item.href} onClick={(e) => { e.preventDefault(); delayNavigation(item.href); }} style={{ textDecoration: 'none', color: '#0f172a', padding: '14px 10px', fontSize: 24, fontWeight: 700, display: 'flex', alignItems: 'flex-start', gap: 16, textAlign: 'left' }}>
                       {item.icon}
                       <div>
                         <div style={{fontSize:20,fontWeight:700, lineHeight: 1.4, textAlign: 'left'}}>{item.title}</div>
@@ -88,7 +94,7 @@ export function Navbar({ dropdowns }: NavbarProps) {
               onMouseEnter={() => document.getElementById('examples-dropdown')?.style && (document.getElementById('examples-dropdown')!.style.display = 'block')}
               onMouseLeave={() => document.getElementById('examples-dropdown')?.style && (document.getElementById('examples-dropdown')!.style.display = 'none')}
             >
-              <a href="/career-levels" style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <a href="/career-levels" onClick={(e) => { e.preventDefault(); delayNavigation('/career-levels'); }} style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>
                 Resume Examples <ChevronDown style={{ width: 18, height: 18 }} />
               </a>
               <div
@@ -111,7 +117,7 @@ export function Navbar({ dropdowns }: NavbarProps) {
               >
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6 }}>
                   {dropdowns.examples.map((item) => (
-                    <a key={item.title} href={item.href} style={{ textDecoration: 'none', color: '#0f172a', padding: '14px 10px', fontSize: 24, fontWeight: 700, display: 'flex', alignItems: 'flex-start', gap: 16, textAlign: 'left' }}>
+                    <a key={item.title} href={item.href} onClick={(e) => { e.preventDefault(); delayNavigation(item.href); }} style={{ textDecoration: 'none', color: '#0f172a', padding: '14px 10px', fontSize: 24, fontWeight: 700, display: 'flex', alignItems: 'flex-start', gap: 16, textAlign: 'left' }}>
                       {item.icon}
                       <div>
                         <div style={{fontSize:20,fontWeight:700, lineHeight: 1.4, textAlign: 'left'}}>{item.title}</div>
@@ -122,11 +128,11 @@ export function Navbar({ dropdowns }: NavbarProps) {
                 </div>
               </div>
             </div>
-            <a href="/contact" style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>Contact Us</a>
+            <a href="/contact" onClick={(e) => { e.preventDefault(); delayNavigation('/contact'); }} style={{ textDecoration: 'none', fontSize: 20, fontWeight: 500, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>Contact Us</a>
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <a href="/builder" style={{ textDecoration: 'none' }}>
+          <a href="/builder" onClick={(e) => { e.preventDefault(); delayNavigation('/builder'); }} style={{ textDecoration: 'none' }}>
             <Button
               variant="outline"
               onMouseEnter={() => {}}
@@ -147,7 +153,7 @@ export function Navbar({ dropdowns }: NavbarProps) {
               Sign In
             </Button>
           </a>
-          <a href="/builder" style={{ textDecoration: 'none' }}>
+          <a href="/builder" onClick={(e) => { e.preventDefault(); delayNavigation('/builder'); }} style={{ textDecoration: 'none' }}>
             <Button
               style={{
                 fontSize: 20,
