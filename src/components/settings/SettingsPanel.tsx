@@ -19,8 +19,6 @@ const fonts = [
 export function SettingsPanel() {
   const customization = useResumeStore((s) => s.customization);
   const updateCustomization = useResumeStore((s) => s.updateCustomization);
-  const resume = useResumeStore((s) => s.resume);
-  const importResume = useResumeStore((s) => s.importResume);
   const resetResume = useResumeStore((s) => s.resetResume);
   const isOpen = useUIStore((s) => s.isSettingsOpen);
   const setOpen = useUIStore((s) => s.setSettingsOpen);
