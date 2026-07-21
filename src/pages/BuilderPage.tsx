@@ -5,7 +5,7 @@ import { useResumeStore } from '@/store/resumeStore';
 import { SectionPanel } from '@/components/builder/SectionPanel';
 import { ResumePreview } from '@/components/preview/ResumePreview';
 import { SettingsPanel } from '@/components/settings/SettingsPanel';
-import { FileText, Edit3, Settings, Maximize2, Minimize2, ZoomIn } from 'lucide-react';
+import { FileText, Edit3, Settings, Maximize2, Minimize2, ZoomIn, ZoomOut } from 'lucide-react';
 
 export function BuilderPage() {
   const isFullscreen = useUIStore((s) => s.isPreviewFullscreen);
@@ -179,6 +179,23 @@ export function BuilderPage() {
               </button>
             </div>
           )}
+          <button
+            onClick={() => setPreviewScale(s => Math.max(s - 0.1, 0.35))}
+            title="Zoom out"
+            style={{
+              padding: '6px',
+              borderRadius: 8,
+              border: '1px solid #E2E8F0',
+              background: '#fff',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#64748b',
+            }}
+          >
+            <ZoomOut size={16} />
+          </button>
           <button
             onClick={() => setPreviewScale(s => Math.min(s + 0.1, 1.2))}
             title="Zoom in"
