@@ -73,17 +73,27 @@ body {
     margin: 0 !important;
   }
   
-  /* Show all children of the preview container */
-  #preview-scroll-container > * {
+  /* Reset scale wrapper and ensure resume is fully visible for print */
+  #resume-scale-wrapper {
     display: block !important;
     visibility: visible !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    margin: 0 auto !important;
   }
   
-  /* Reset the scale transform on the resume content */
-  #preview-scroll-container > div > div {
+  #resume-scale-inner {
     transform: none !important;
-    max-width: 210mm !important;
-    margin: 0 auto !important;
+    transform-origin: unset !important;
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 210mm !important;
   }
   
   /* Ensure A4 page size */

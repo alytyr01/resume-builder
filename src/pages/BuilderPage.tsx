@@ -281,15 +281,21 @@ export function BuilderPage() {
               background: '#F1F5F9',
               flex: 1,
             }}>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              padding: '24px 16px',
-            }}>
-              <div style={{
-                transform: `scale(${previewScale})`,
-                transformOrigin: 'top center',
-              }}>
+            <div
+              id="resume-scale-wrapper"
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                padding: '24px 16px',
+              }}
+            >
+              <div
+                id="resume-scale-inner"
+                style={{
+                  transform: `scale(${previewScale})`,
+                  transformOrigin: 'top center',
+                }}
+              >
                 <ResumePreview />
               </div>
             </div>

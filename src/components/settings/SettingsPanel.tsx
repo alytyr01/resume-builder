@@ -4,6 +4,7 @@ import { Button, Select, Input, Modal } from '@/components/ui';
 import { templateInfo } from '@/components/templates';
 import { Download, Printer, RotateCcw } from 'lucide-react';
 import type { TemplateId } from '@/types/resume';
+import { printResume } from '@/utils/print';
 
 const fonts = [
   { value: 'Inter', label: 'Inter' },
@@ -25,8 +26,8 @@ export function SettingsPanel() {
 
   const handlePrint = () => window.print();
 
-  const handleExportPDF = () => {
-    window.print();
+  const handleExportPDF = async () => {
+    await printResume();
   };
 
   const labelStyle: React.CSSProperties = {
