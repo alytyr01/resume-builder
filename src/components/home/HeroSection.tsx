@@ -34,7 +34,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
           paddingRight: 0,
         }}>
           <h1 className="hero-title" style={{
-            fontSize: 'clamp(28px, 6vw, 64px)',
+            fontSize: 'clamp(32px, 7vw, 64px)',
             fontWeight: 800,
             letterSpacing: '-0.04em',
             lineHeight: 1.05,
@@ -129,13 +129,19 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
           {/* Stats */}
           <div className="hero-stats" style={{
             display: 'flex',
-            gap: 'clamp(32px, 5vw, 28px)',
+            gap: 'clamp(16px, 4vw, 28px)',
             paddingTop: 16,
             paddingBottom: 24,
             borderTop: '1px solid #F1F5F9',
-            flexWrap: 'wrap',
+            flexWrap: 'nowrap',
+            overflowX: 'auto',
+            whiteSpace: 'nowrap',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch',
+            scrollSnapType: 'x mandatory',
           }}>
-            <div>
+            <div style={{ scrollSnapAlign: 'start' }}>
               <div style={{
                 fontSize: 'clamp(16px, 2vw, 22px)',
                 fontWeight: 700,
@@ -149,7 +155,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
                 marginTop: 2,
               }}>Resumes Created</div>
             </div>
-            <div>
+            <div style={{ scrollSnapAlign: 'start' }}>
               <div style={{
                 fontSize: 'clamp(16px, 2vw, 22px)',
                 fontWeight: 700,
@@ -163,7 +169,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
                 marginTop: 2,
               }}>User Rating</div>
             </div>
-            <div>
+            <div style={{ scrollSnapAlign: 'start' }}>
               <div style={{
                 fontSize: 'clamp(16px, 2vw, 22px)',
                 fontWeight: 700,
@@ -177,7 +183,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
                 marginTop: 2,
               }}>Interview Rate</div>
             </div>
-            <div>
+            <div style={{ scrollSnapAlign: 'start' }}>
               <div style={{
                 fontSize: 'clamp(16px, 2vw, 22px)',
                 fontWeight: 700,
