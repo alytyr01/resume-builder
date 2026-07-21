@@ -23,6 +23,7 @@ export async function printResume() {
     clone.style.minHeight = '297mm';
     clone.style.height = 'auto';
     clone.style.overflow = 'visible';
+    clone.style.overflow = 'visible';
 
     // Position off-screen for capture
     clone.style.position = 'absolute';
