@@ -39,8 +39,12 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
     <>
       <style>{`
         @media (max-width: 640px) {
-          .hero-btn-book-demo {
+          .hero-cta {
+            flex-direction: column !important;
+          }
+          .hero-cta a {
             flex: 1 !important;
+            width: 100% !important;
           }
         }
       `}</style>
