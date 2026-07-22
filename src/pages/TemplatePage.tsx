@@ -488,6 +488,22 @@ export function TemplatePage() {
         .faq-answer {
           transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         }
+
+        @media (max-width: 1024px) {
+          .samples-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+
+        @media (max-width: 768px) {
+          .samples-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .sample-resume-card { height: 350px !important; }
+          .sample-resume-card > div { transform: scale(0.35) !important; }
+        }
+
+        @media (max-width: 480px) {
+          .samples-grid { grid-template-columns: 1fr !important; }
+          .sample-resume-card { height: 300px !important; }
+          .sample-resume-card > div { transform: scale(0.3) !important; }
+        }
       `}</style>
 
       {/* About Section */}
@@ -597,14 +613,14 @@ export function TemplatePage() {
         }}>
           Sample Resumes
         </h2>
-        <div style={{
+        <div className="samples-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
           gap: 30,
         }}>
           {sampleResumes.map((sampleResume, index) => (
             <div key={index}>
-              <div style={{
+              <div className="sample-resume-card" style={{
                 boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
                 background: '#fff',
                 overflow: 'hidden',

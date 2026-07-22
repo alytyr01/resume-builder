@@ -217,28 +217,55 @@ export function EntryLevelPage() {
           .hero-content { flex-direction: column !important; align-items: stretch !important; }
           .hero-image { margin-top: 40px; margin-left: auto !important; margin-right: auto !important; width: 220px !important; height: auto !important; max-width: 220px !important; }
           .hero-title { font-size: 40px !important; }
+          .toc-section { padding: 48px 16px 0 !important; }
+          .toc-title { font-size: 24px !important; }
+          .toc-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .intro-section { padding: 48px 16px !important; }
+          .popular-section { padding: 0 16px 48px !important; }
+          .popular-title { font-size: 24px !important; }
+          .tips-section { padding: 0 16px 48px !important; }
+          .tips-title { font-size: 24px !important; }
+          .tips-grid { grid-template-columns: 1fr !important; }
+          .faq-section { padding: 0 16px 48px !important; }
+          .faq-title { font-size: 24px !important; }
+          .cta-section { padding: 48px 16px !important; }
+          .cta-title { font-size: 24px !important; }
+          .cta-text { font-size: 16px !important; }
         }
-
         @media (max-width: 480px) {
-          .hero-section { padding: 20px 0 40px !important; }
-          .hero-image { margin-left: auto !important; margin-right: auto !important; width: 260px !important; max-width: 260px !important; height: auto !important; }
+          .hero-section { padding: 20px 12px 40px !important; }
           .hero-title { font-size: 32px !important; }
+          .hero-image { width: 240px !important; max-width: 240px !important; }
+          .toc-section { padding: 40px 12px 0 !important; }
+          .toc-title { font-size: 20px !important; }
+          .toc-grid { grid-template-columns: 1fr !important; }
+          .toc-item { padding: 14px 16px !important; font-size: 13px !important; }
+          .toc-item span:last-child { padding-left: 4px !important; }
+          .intro-section { padding: 40px 12px !important; }
+          .popular-section { padding: 0 12px 40px !important; }
+          .popular-title { font-size: 20px !important; }
+          .tips-section { padding: 0 12px 40px !important; }
+          .tips-title { font-size: 20px !important; }
+          .faq-section { padding: 0 12px 40px !important; }
+          .faq-title { font-size: 20px !important; }
+          .cta-section { padding: 40px 12px !important; }
+          .cta-title { font-size: 20px !important; }
         }
       `}</style>
 
       {/* Table of Contents */}
-      <div style={{
+      <div className="toc-section" style={{
         padding: '60px 96px 0',
         background: '#fff',
         borderTop: '1px solid #E2E8F0',
       }}>
-        <h2 style={{
+        <h2 className="toc-title" style={{
           fontSize: 32,
           fontWeight: 700,
           marginBottom: 32,
           color: '#0f172a',
         }}>Table of Contents</h2>
-        <div style={{
+        <div className="toc-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: 0,
@@ -254,7 +281,7 @@ export function EntryLevelPage() {
             'Common Mistakes to Avoid',
             'Frequently Asked Questions',
           ].map((item, index) => (
-            <div key={index} style={{
+            <div key={index} className="toc-item" style={{
               padding: '24px 28px',
               borderBottom: index < 3 ? '1px solid #E2E8F0' : 'none',
               borderRight: index % 3 !== 2 ? '1px solid #E2E8F0' : 'none',
@@ -297,7 +324,7 @@ export function EntryLevelPage() {
       </div>
 
       {/* Introduction */}
-      <div style={{
+      <div className="intro-section" style={{
         padding: '60px 96px',
         background: '#F8F9FA',
       }}>
@@ -355,11 +382,11 @@ export function EntryLevelPage() {
       </div>
 
       {/* Most Popular Entry Level Resumes */}
-      <div style={{
+      <div className="popular-section" style={{
         padding: '0 96px 60px',
         background: '#fff',
       }}>
-        <h2 style={{
+        <h2 className="popular-title" style={{
           fontSize: 36,
           fontWeight: 700,
           marginBottom: 40,
@@ -438,17 +465,17 @@ export function EntryLevelPage() {
       </div>
 
       {/* Resume Tips */}
-      <div style={{
+      <div className="tips-section" style={{
         padding: '0 96px 60px',
         background: '#F8F9FA',
       }}>
-        <h2 style={{
+        <h2 className="tips-title" style={{
           fontSize: 36,
           fontWeight: 700,
           marginBottom: 40,
           color: '#0f172a',
         }}>Entry Level Resume Tips</h2>
-        <div style={{
+        <div className="tips-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
           gap: 20,
@@ -487,11 +514,11 @@ export function EntryLevelPage() {
       </div>
 
       {/* FAQ Section */}
-      <div style={{
+      <div className="faq-section" style={{
         padding: '0 96px 60px',
         background: '#fff',
       }}>
-        <h2 style={{
+        <h2 className="faq-title" style={{
           fontSize: 36,
           fontWeight: 700,
           marginBottom: 40,
@@ -556,18 +583,18 @@ export function EntryLevelPage() {
       </div>
 
       {/* CTA Section */}
-      <div style={{
+      <div className="cta-section" style={{
         padding: '80px 96px',
         background: 'linear-gradient(135deg, #EEF2FF 0%, #EFF6FF 100%)',
         textAlign: 'center',
       }}>
-        <h2 style={{
+        <h2 className="cta-title" style={{
           fontSize: 36,
           fontWeight: 700,
           marginBottom: 16,
           color: '#0f172a',
         }}>Ready to Build Your Entry Level Resume?</h2>
-        <p style={{
+        <p className="cta-text" style={{
           fontSize: 18,
           color: '#475569',
           marginBottom: 32,
