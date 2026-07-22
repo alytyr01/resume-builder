@@ -44,20 +44,26 @@ export function Navbar({ dropdowns }: NavbarProps) {
   return (
     <>
       <style>{`
-        @media (max-width: 768px) {
-          .navbar-desktop-dropdown {
-            display: none !important;
-          }
-          .navbar-navlinks {
-            display: none !important;
-          }
-          .navbar-desktop-actions {
-            display: none !important;
-          }
-          .navbar-hamburger {
-            display: flex !important;
-          }
-        }
+         @media (max-width: 768px) {
+           .navbar-desktop-dropdown {
+             display: none !important;
+           }
+           .navbar-navlinks {
+             display: none !important;
+           }
+           .navbar-desktop-actions {
+             display: none !important;
+           }
+           .navbar-hamburger {
+             display: flex !important;
+           }
+           .navbar-divider {
+             display: none !important;
+           }
+           .navbar-logo {
+             margin-right: auto !important;
+           }
+         }
 
         @media (max-width: 480px) {
           .mobile-template-item {

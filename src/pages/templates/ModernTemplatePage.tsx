@@ -116,7 +116,8 @@ export function ModernTemplatePage() {
         <div className="hero-content" style={{
           display: 'flex',
           gap: 60,
-          alignItems: 'flex-start',
+          alignItems: 'center',
+          maxWidth: '100%',
         }}>
           {/* Left side - Text content */}
           <div style={{ flex: 1, paddingRight: 20 }}>
@@ -234,6 +235,8 @@ export function ModernTemplatePage() {
             borderRadius: 14,
             boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
             position: 'relative',
+            maxWidth: '100%',
+            overflow: 'hidden',
           }}>
             <img
               src="/images/resume1.webp"
@@ -314,13 +317,13 @@ export function ModernTemplatePage() {
 
         @media (max-width: 768px) {
           .page-wrapper { padding-top: 64px !important; }
-          .hero-section { padding: 24px 24px 48px !important; }
-          .hero-content { flex-direction: column !important; }
-          .hero-image { flex: 1 1 100% !important; margin-top: 40px; }
+          .hero-section { padding: 24px 16px 48px !important; }
+          .hero-content { flex-direction: column !important; align-items: stretch !important; }
+          .hero-image { flex: 1 1 100% !important; margin-top: 40px; max-width: 100% !important; }
           .hero-title { font-size: 40px !important; }
           .hero-desc { font-size: 15px !important; }
-          .section-padding { padding: 0 24px 48px !important; }
-          .about-section { padding: 48px 24px 0 !important; }
+          .section-padding { padding: 0 16px 48px !important; }
+          .about-section { padding: 48px 16px 0 !important; }
           .section-title { font-size: 28px !important; }
           .features-grid { grid-template-columns: 1fr !important; }
           .samples-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -339,7 +342,8 @@ export function ModernTemplatePage() {
 
         @media (max-width: 480px) {
           .page-wrapper { padding-top: 56px !important; }
-          .hero-section { padding: 20px 16px 40px !important; margin-top: 8px !important; }
+          .hero-section { padding: 20px 0 40px !important; margin-top: 8px !important; }
+          .hero-content { padding: 0 16px !important; }
           .hero-title { font-size: 32px !important; }
           .hero-desc { font-size: 14px !important; }
           .section-padding { padding: 0 16px 40px !important; }
@@ -347,8 +351,8 @@ export function ModernTemplatePage() {
           .section-title { font-size: 24px !important; }
           .samples-grid { grid-template-columns: 1fr !important; }
           .tips-grid { grid-template-columns: 1fr !important; }
-          .cta-button { padding: 14px 24px !important; font-size: 14px !important; width: 100% !important; justify-content: center !important; text-align: center !important; }
-          .cta-buttons-row { flex-direction: column !important; gap: 12px !important; }
+          .cta-button { padding: 14px 16px !important; font-size: 14px !important; width: 100% !important; justify-content: center !important; text-align: center !important; }
+          .cta-buttons-row { flex-direction: column !important; gap: 12px !important; padding: 0 16px !important; margin: 0 -16px !important; }
           .star-icon { width: 18px !important; height: 18px !important; }
           .rating-text { font-size: 14px !important; }
           .feature-card { padding: 16px !important; }
