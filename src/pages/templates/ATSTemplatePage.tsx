@@ -80,7 +80,7 @@ export function ATSTemplatePage() {
     'Avoid tables, columns, and text boxes',
     'Include keywords from the job description',
     'Use common file formats like PDF or Word',
-    'Don\'t use headers and footers for critical information',
+    "Don't use headers and footers for critical information",
     'Test your resume with ATS simulators before submitting',
   ];
 
@@ -317,10 +317,10 @@ export function ATSTemplatePage() {
 
         @media (max-width: 768px) {
           .page-wrapper { padding-top: 64px !important; }
-          .hero-section { padding: 24px 16px 48px !important; overflow-x: visible !important; }
+          .hero-section { padding: 24px 16px 48px !important; overflow-x: hidden !important; }
           .hero-content { flex-direction: column !important; align-items: stretch !important; max-width: 100% !important; }
-          .hero-image { flex: 1 1 100% !important; margin-top: 40px; margin-right: 0 !important; width: 100% !important; max-width: 360px !important; margin-left: auto !important; margin-right: auto !important; overflow: hidden !important; border-radius: 14px !important; }
-          .hero-image img[aria-hidden='true'] { position: relative !important; left: auto !important; top: auto !important; width: 100% !important; }
+          .hero-image { flex: 0 0 auto !important; margin-top: 40px; margin-left: auto !important; margin-right: auto !important; width: 220px !important; max-width: 220px !important; overflow: visible !important; border-radius: 14px !important; position: relative !important; }
+          .hero-image img[aria-hidden='true'] { position: absolute !important; left: -10px !important; top: auto !important; bottom: -20px !important; width: 55% !important; height: auto !important; opacity: 0.5 !important; z-index: 0 !important; }
           .hero-title { font-size: 40px !important; }
           .hero-desc { font-size: 15px !important; }
           .section-padding { padding: 0 16px 48px !important; }
@@ -345,8 +345,9 @@ export function ATSTemplatePage() {
           .page-wrapper { padding-top: 56px !important; }
           .hero-section { padding: 20px 0 40px !important; margin-top: 8px !important; overflow-x: visible !important; }
           .hero-content { padding: 0 0 0 16px !important; }
-          .hero-image { flex: 1 1 100% !important; margin-right: 0 !important; border-radius: 14px !important; max-width: 300px !important; width: 100% !important; margin-left: auto !important; margin-right: auto !important; }
-          .hero-image img:not([aria-hidden='true']) { width: 100% !important; height: auto !important; }
+          .hero-image { flex: 1 1 100% !important; margin-left: auto !important; margin-right: auto !important; border-radius: 14px !important; max-width: 260px !important; width: 100% !important; position: relative !important; overflow: visible !important; }
+          .hero-image img[aria-hidden='true'] { position: absolute !important; left: -8px !important; top: auto !important; bottom: -16px !important; width: 50% !important; height: auto !important; opacity: 0.5 !important; z-index: 0 !important; }
+          .hero-image img:not([aria-hidden='true']) { position: relative !important; z-index: 1 !important; }
           .hero-title { font-size: 32px !important; }
           .hero-desc { font-size: 14px !important; }
           .section-padding { padding: 0 16px 40px !important; }

@@ -81,25 +81,25 @@ export function EntryLevelPage() {
       }} />
 
       {/* Hero Section */}
-      <div style={{
+      <div className="hero-section" style={{
         background: 'linear-gradient(135deg, #EEF2FF 0%, #EFF6FF 100%)',
         padding: '80px 96px',
       }}>
-        <h1 style={{
+        <h1 className="hero-title" style={{
           fontSize: 48,
           fontWeight: 800,
           marginBottom: 16,
           color: '#0f172a',
         }}>Entry Level Resume Examples and Templates for 2026</h1>
         
-        <div style={{
+        <div className="hero-content" style={{
           display: 'flex',
           gap: 40,
           alignItems: 'flex-start',
           marginTop: 40,
         }}>
           {/* Template Image */}
-          <div style={{
+          <div className="hero-image" style={{
             width: 300,
             height: 400,
             borderRadius: 14,
@@ -210,6 +210,21 @@ export function EntryLevelPage() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-section { padding: 24px 16px 48px !important; }
+          .hero-content { flex-direction: column !important; align-items: stretch !important; }
+          .hero-image { margin-top: 40px; margin-left: auto !important; margin-right: auto !important; width: 220px !important; height: auto !important; max-width: 220px !important; }
+          .hero-title { font-size: 40px !important; }
+        }
+
+        @media (max-width: 480px) {
+          .hero-section { padding: 20px 0 40px !important; }
+          .hero-image { margin-left: auto !important; margin-right: auto !important; width: 260px !important; max-width: 260px !important; height: auto !important; }
+          .hero-title { font-size: 32px !important; }
+        }
+      `}</style>
 
       {/* Table of Contents */}
       <div style={{
