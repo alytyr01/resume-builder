@@ -28,6 +28,8 @@ export function ProfessionalTemplatePage() {
     ]
   };
 
+  const heroDescription1 = 'Corporate, formal style designed for executive and senior-level positions. Conveys authority and professionalism.';
+  const heroDescription2 = 'Featuring traditional corporate layout and formal appearance, this template emphasizes experience and leadership for high-level positions.';
 
   const faqs = [
     {
@@ -107,67 +109,65 @@ export function ProfessionalTemplatePage() {
       }} />
       
       {/* Hero Section */}
-      <div className="hero-section template-hero" style={{
-        background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
-        padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 96px)',
+      <div className="hero-section" style={{
+        background: 'linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%)',
+        padding: '80px 96px',
         marginBottom: 0,
         position: 'relative',
       }}>
         <div className="hero-content" style={{
           display: 'flex',
-          flexDirection: 'column',
-          gap: 'clamp(24px, 4vw, 60px)',
+          gap: 60,
           alignItems: 'flex-start',
         }}>
-          <div style={{ flex: 1, paddingRight: 0, width: '100%' }}>
-            <h1 style={{
-              fontSize: 'clamp(32px, 7vw, 64px)',
+          <div style={{ flex: 1, paddingRight: 20 }}>
+            <h1 className="hero-title" style={{
+              fontSize: 64,
               fontWeight: 800,
               letterSpacing: '-0.03em',
               lineHeight: 1.2,
               margin: '0 0 24px',
-              color: '#fff',
+              color: '#0f172a',
             }}>
               Professional Resume Template
             </h1>
-            <p style={{
-              fontSize: 'clamp(15px, 2vw, 18px)',
-              lineHeight: 1.7,
-              color: '#cbd5e1',
-              margin: '0 0 20px',
-              maxWidth: 'min(800px, 100%)',
-            }}>
-              Corporate, formal style designed for traditional industries and senior positions. Perfect for executives, managers, and professionals seeking to convey authority and credibility.
-            </p>
-            <p style={{
-              fontSize: 'clamp(15px, 2vw, 18px)',
-              lineHeight: 1.7,
-              color: '#cbd5e1',
+            <p className="hero-desc" style={{
+              fontSize: 18,
+              lineHeight: 2,
+              color: '#475569',
               margin: '0 0 32px',
-              maxWidth: 'min(800px, 100%)',
+              maxWidth: 800,
             }}>
-              Featuring a clean two-column header layout, professional typography, and structured sections that highlight your career progression and achievements in a format that resonates with corporate recruiters and hiring managers.
+              {heroDescription1}
+            </p>
+            <p className="hero-desc" style={{
+              fontSize: 18,
+              lineHeight: 2,
+              color: '#475569',
+              margin: '0 0 40px',
+              maxWidth: 800,
+            }}>
+              {heroDescription2}
             </p>
 
             <div style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: 24,
+              gap: 28,
             }}>
-              <div className="template-hero-buttons" style={{
+              <div style={{
                 display: 'flex',
-                flexDirection: 'column',
                 gap: 12,
               }}>
                 <a
                   href="/builder?template=professional"
+                  className="cta-button"
                   style={{
                     textDecoration: 'none',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: 'clamp(14px, 3vw, 20px) clamp(20px, 3vw, 40px)',
-                    fontSize: 'clamp(14px, 1.5vw, 18px)',
+                    padding: '20px 40px',
+                    fontSize: 18,
                     fontWeight: 600,
                     color: '#fff',
                     background: '#0f172a',
@@ -175,20 +175,19 @@ export function ProfessionalTemplatePage() {
                     border: 'none',
                     cursor: 'pointer',
                     fontFamily: 'sans-serif',
-                    width: '100%',
                   }}
                 >
                   Use This Template
                 </a>
                 <a
                   href="/templates"
+                  className="cta-button"
                   style={{
                     textDecoration: 'none',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: 'clamp(14px, 3vw, 20px) clamp(20px, 3vw, 40px)',
-                    fontSize: 'clamp(14px, 1.5vw, 18px)',
+                    padding: '20px 40px',
+                    fontSize: 18,
                     fontWeight: 500,
                     color: '#0f172a',
                     background: '#fff',
@@ -196,7 +195,6 @@ export function ProfessionalTemplatePage() {
                     border: '1.5px solid #0f172a',
                     cursor: 'pointer',
                     fontFamily: 'sans-serif',
-                    width: '100%',
                   }}
                 >
                   Back to Templates
@@ -212,17 +210,17 @@ export function ProfessionalTemplatePage() {
                   gap: 4,
                 }}>
                   {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} width="24" height="24" viewBox="0 0 24 24">
+                    <svg key={star} className="star-icon" width="24" height="24" viewBox="0 0 24 24">
                       <use href="/icons.svg#star-icon" />
                     </svg>
                   ))}
                 </div>
-                <span style={{
+                <span className="rating-text" style={{
                   fontSize: 18,
                   fontWeight: 600,
                   color: '#0f172a',
                 }}>4.9</span>
-                <span style={{
+                <span className="rating-text" style={{
                   fontSize: 18,
                   color: '#64748b',
                 }}>(2.3k reviews)</span>
@@ -302,31 +300,65 @@ export function ProfessionalTemplatePage() {
           .hero-section { padding: 60px 48px !important; }
           .section-padding { padding: 0 48px 60px !important; }
           .about-section { padding: 60px 48px 0 !important; }
+          .hero-title { font-size: 48px !important; }
+          .hero-desc { font-size: 16px !important; }
+          .section-title { font-size: 32px !important; }
+          .cta-button { padding: 16px 32px !important; font-size: 16px !important; }
+          .feature-card { padding: 24px !important; }
+          .feature-icon { width: 48px !important; height: 48px !important; }
+          .feature-icon svg { width: 24px !important; height: 24px !important; }
+          .feature-title { font-size: 18px !important; }
+          .feature-text { font-size: 14px !important; }
         }
 
         @media (max-width: 768px) {
           .hero-section { padding: 48px 24px !important; }
           .hero-content { flex-direction: column !important; }
           .hero-image { flex: 1 1 100% !important; margin-top: 40px; }
+          .hero-title { font-size: 40px !important; }
+          .hero-desc { font-size: 15px !important; }
           .section-padding { padding: 0 24px 48px !important; }
           .about-section { padding: 48px 24px 0 !important; }
+          .section-title { font-size: 28px !important; }
           .features-grid { grid-template-columns: 1fr !important; }
           .samples-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .usecases-grid { grid-template-columns: 1fr !important; }
           .tips-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .cta-button { padding: 14px 28px !important; font-size: 15px !important; }
+          .star-icon { width: 20px !important; height: 20px !important; }
+          .rating-text { font-size: 15px !important; }
+          .feature-card { padding: 20px !important; }
+          .feature-icon { width: 44px !important; height: 44px !important; }
+          .feature-icon svg { width: 22px !important; height: 22px !important; }
+          .feature-title { font-size: 17px !important; }
+          .use-case-text { font-size: 15px !important; }
+          .tip-text { font-size: 14px !important; }
         }
 
         @media (max-width: 480px) {
           .hero-section { padding: 32px 16px !important; }
+          .hero-title { font-size: 32px !important; }
+          .hero-desc { font-size: 14px !important; }
           .section-padding { padding: 0 16px 40px !important; }
           .about-section { padding: 40px 16px 0 !important; }
+          .section-title { font-size: 24px !important; }
           .samples-grid { grid-template-columns: 1fr !important; }
           .tips-grid { grid-template-columns: 1fr !important; }
+          .cta-button { padding: 12px 24px !important; font-size: 14px !important; }
+          .star-icon { width: 18px !important; height: 18px !important; }
+          .rating-text { font-size: 14px !important; }
+          .feature-card { padding: 16px !important; }
+          .feature-icon { width: 40px !important; height: 40px !important; }
+          .feature-icon svg { width: 20px !important; height: 20px !important; }
+          .feature-title { font-size: 16px !important; }
+          .feature-text { font-size: 13px !important; }
+          .use-case-text { font-size: 14px !important; }
+          .tip-text { font-size: 13px !important; }
         }
       `}</style>
 
       <div className="about-section" style={{ padding: '60px 96px 0' }}>
-        <h2 style={{
+        <h2 className="section-title" style={{
           fontSize: 40,
           fontWeight: 700,
           margin: '0 0 32px',
@@ -347,7 +379,7 @@ export function ProfessionalTemplatePage() {
       </div>
 
       <div className="section-padding" style={{ padding: '0 96px 60px' }}>
-        <h2 style={{
+        <h2 className="section-title" style={{
           fontSize: 40,
           fontWeight: 700,
           margin: '0 0 32px',
@@ -361,7 +393,7 @@ export function ProfessionalTemplatePage() {
           gap: 24,
         }}>
           {features.map((feature, index) => (
-            <div key={index} style={{
+            <div key={index} className="feature-card" style={{
               background: '#fff',
               padding: 32,
               borderRadius: 16,
@@ -371,7 +403,7 @@ export function ProfessionalTemplatePage() {
               alignItems: 'flex-start',
               gap: 20,
             }}>
-              <div style={{
+              <div className="feature-icon" style={{
                 width: 56,
                 height: 56,
                 borderRadius: 14,
@@ -389,13 +421,13 @@ export function ProfessionalTemplatePage() {
                 {index === 5 && <Crown style={{ width: 28, height: 28, color: '#0f172a' }} />}
               </div>
               <div>
-                <div style={{
+                <div className="feature-title" style={{
                   fontSize: 22,
                   fontWeight: 700,
                   color: '#0f172a',
                   marginBottom: 16,
                 }}>{feature}</div>
-                <p style={{
+                <p className="feature-text" style={{
                   fontSize: 16,
                   lineHeight: 1.7,
                   color: '#475569',
@@ -410,7 +442,7 @@ export function ProfessionalTemplatePage() {
       </div>
 
       <div className="section-padding" style={{ padding: '0 96px 60px' }}>
-        <h2 style={{
+        <h2 className="section-title" style={{
           fontSize: 40,
           fontWeight: 700,
           margin: '0 0 32px',
@@ -431,7 +463,7 @@ export function ProfessionalTemplatePage() {
                 overflow: 'hidden',
                 aspectRatio: '8.5/11',
                 position: 'relative',
-                height: 500,
+                width: '100%',
               }}>
                 <div style={{
                   transform: 'scale(0.45)',
@@ -451,7 +483,7 @@ export function ProfessionalTemplatePage() {
       </div>
 
       <div className="section-padding" style={{ padding: '0 96px 60px' }}>
-        <h2 style={{
+        <h2 className="section-title" style={{
           fontSize: 40,
           fontWeight: 700,
           margin: '0 0 32px',
@@ -488,7 +520,7 @@ export function ProfessionalTemplatePage() {
                 fontWeight: 700,
                 flexShrink: 0,
               }}>{index + 1}</span>
-              <span style={{
+              <span className="use-case-text" style={{
                 fontSize: 18,
                 color: '#334155',
                 lineHeight: 1.6,
@@ -500,7 +532,7 @@ export function ProfessionalTemplatePage() {
       </div>
 
       <div className="section-padding" style={{ padding: '0 96px 80px' }}>
-        <h2 style={{
+        <h2 className="section-title" style={{
           fontSize: 40,
           fontWeight: 700,
           margin: '0 0 32px',
@@ -537,7 +569,7 @@ export function ProfessionalTemplatePage() {
                 fontWeight: 700,
                 flexShrink: 0,
               }}>{index + 1}</span>
-              <span style={{
+              <span className="tip-text" style={{
                 fontSize: 16,
                 lineHeight: 1.6,
                 color: '#475569',
@@ -548,7 +580,7 @@ export function ProfessionalTemplatePage() {
       </div>
 
       <div className="section-padding" style={{ padding: '0 96px 60px' }}>
-        <h2 style={{
+        <h2 className="section-title" style={{
           fontSize: 40,
           fontWeight: 700,
           margin: '0 0 32px',
