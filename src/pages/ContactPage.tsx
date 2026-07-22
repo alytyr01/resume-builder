@@ -285,15 +285,16 @@ export function ContactPage() {
 
       {/* Contact Info Cards */}
       <div style={{
-        padding: '60px 96px',
+        padding: isMobile ? '40px 24px 60px' : '60px 96px',
         background: '#fff',
       }}>
         <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
           gap: 24,
-          maxWidth: 1200,
+          maxWidth: isMobile ? 400 : 1200,
           margin: '0 auto',
+          width: '100%',
         }}
         className="contact-cards-grid"
         >
@@ -800,6 +801,11 @@ export function ContactPage() {
           padding-right: 24px !important;
         }
         @media (max-width: 640px) {
+          .contact-cards-grid > div {
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+          }
           .contact-form-section {
             padding-left: 16px !important;
             padding-right: 16px !important;
