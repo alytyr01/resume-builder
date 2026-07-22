@@ -36,7 +36,7 @@ export function ResumeCard({ templateId, width, height }: ResumeCardProps) {
         WebkitBackdropFilter: 'blur(12px)',
         border: '1px solid rgba(255, 255, 255, 0.5)',
         boxShadow: '0 24px 64px rgba(30, 41, 59, 0.45)',
-        overflow: 'visible',
+        overflow: 'hidden',
         padding: 16,
         boxSizing: 'border-box',
         position: 'relative',
@@ -48,10 +48,12 @@ export function ResumeCard({ templateId, width, height }: ResumeCardProps) {
       <img
         src={imageSrc}
         alt={`${templateId} template`}
+        loading="eager"
+        decoding="async"
         style={{
           width: '100%',
           height: '100%',
-          objectFit: 'contain',
+          objectFit: 'cover',
           borderRadius: 16,
           display: 'block',
         }}

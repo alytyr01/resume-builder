@@ -15,18 +15,23 @@ interface HeroSectionProps {
 
 export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
   const [cardScale, setCardScale] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 375) {
         setCardScale(0.85);
+        setIsMobile(true);
       } else if (width < 640) {
         setCardScale(0.9);
+        setIsMobile(true);
       } else if (width < 768) {
         setCardScale(0.95);
+        setIsMobile(true);
       } else {
         setCardScale(1);
+        setIsMobile(false);
       }
     };
 
@@ -45,76 +50,6 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
           .hero-cta a {
             flex: 1 !important;
             width: 100% !important;
-          }
-        }
-        
-        /* Hero section responsive - two hero images centering */
-        @media (max-width: 768px) {
-          .hero-cards-col {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            height: auto !important;
-          }
-          .hero-cards-wrapper {
-            position: relative !important;
-            width: 280px !important;
-            height: 380px !important;
-            margin: 0 auto !important;
-          }
-          .hero-card-first {
-            position: absolute !important;
-            left: 50% !important;
-            top: 65% !important;
-            transform: translate(-50%, -50%) !important;
-            z-index: 0 !important;
-            width: 240px !important;
-          }
-          .hero-card-second {
-            position: absolute !important;
-            left: 48% !important;
-            top: 35% !important;
-            transform: translate(-50%, -50%) !important;
-            z-index: 1 !important;
-            width: 180px !important;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          .hero-page-wrapper {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-          }
-          .hero-cards-col {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            height: 300px !important;
-            margin-top: 24px !important;
-            margin-bottom: 24px !important;
-          }
-          .hero-cards-wrapper {
-            position: relative !important;
-            width: 220px !important;
-            height: 300px !important;
-            margin: 0 auto !important;
-          }
-          .hero-card-first {
-            position: absolute !important;
-            left: 50% !important;
-            top: 65% !important;
-            transform: translate(-50%, -50%) !important;
-            z-index: 0 !important;
-            width: 180px !important;
-          }
-          .hero-card-second {
-            position: absolute !important;
-            left: 48% !important;
-            top: 35% !important;
-            transform: translate(-50%, -50%) !important;
-            z-index: 1 !important;
-            width: 140px !important;
           }
         }
       `}</style>
@@ -317,7 +252,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
             alignItems: 'center',
             justifyContent: 'center',
             overflow: 'visible',
-            marginTop: 48,
+            marginTop: isMobile ? 120 : 48,
             width: '100%',
           }}>
             <div className="hero-cards-wrapper" style={{
@@ -325,22 +260,25 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
               width: '100%',
               maxWidth: '520px',
               height: 'auto',
-              minHeight: `${600 * cardScale}px`,
+              minHeight: isMobile ? '420px' : `${600 * cardScale}px`,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              justifyContent: 'center',
               gap: `${32 * cardScale}px`,
-              transform: `scale(${cardScale})`,
+              transform: isMobile ? 'none' : `scale(${cardScale})`,
               transformOrigin: 'top center',
               marginBottom: `${-((600 - 200) * (1 - cardScale))}px`,
             }}>
-              {/* First Card */}
+              {/* First Card (Back - Centered group, slightly left & lower) */}
               <div className="hero-card-first" style={{
-                position: 'absolute',
+                position: isMobile ? 'absolute' : 'absolute',
                 left: '50%',
-                transform: 'translateX(-50%)',
+                top: '50%',
+                transform: isMobile ? 'translate(calc(-50% - 30px), calc(-50% + 8px))' : 'translate(-50%, -50%)',
+                zIndex: isMobile ? 1 : undefined,
               }}>
-                <ResumeCard templateId="modern" width={400 * cardScale} height={560 * cardScale} />
+                <ResumeCard templateId="modern" width={isMobile ? 260 * cardScale : 400 * cardScale} height={isMobile ? 364 * cardScale : 560 * cardScale} />
                 <div style={{
                   position: 'absolute',
                   bottom: -16,
@@ -362,13 +300,16 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
                 </div>
               </div>
 
-              {/* Second Card */}
+              {/* Second Card (Front - Centered group, slightly right & higher) */}
               <div className="hero-card-second" style={{
-                position: 'absolute',
-                right: `${20 * cardScale}px`,
-                top: `${140 * cardScale}px`,
+                position: isMobile ? 'absolute' : 'absolute',
+                left: isMobile ? '50%' : undefined,
+                right: isMobile ? undefined : `${20 * cardScale}px`,
+                top: isMobile ? '50%' : `${140 * cardScale}px`,
+                transform: isMobile ? 'translate(calc(-50% + 15px), calc(-50% - 8px))' : undefined,
+                zIndex: isMobile ? 2 : undefined,
               }}>
-                <ResumeCard templateId="professional" width={280 * cardScale} height={392 * cardScale} />
+                <ResumeCard templateId="professional" width={isMobile ? 260 * cardScale : 280 * cardScale} height={isMobile ? 364 * cardScale : 392 * cardScale} />
                 <div style={{
                   position: 'absolute',
                   bottom: -40,
@@ -390,7 +331,7 @@ export function HeroSection({ onStartHover, startHover }: HeroSectionProps) {
                 </div>
                 <div style={{
                   position: 'absolute',
-                  top: -60,
+                  top: -48,
                   right: 0,
                   background: '#334155',
                   color: '#fff',
